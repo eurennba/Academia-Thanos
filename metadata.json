@@ -1,0 +1,6 @@
+{
+  "name": "Academia Thanos | Guaranésia - MG",
+  "description": "Site oficial da Academia Thanos em Guaranésia - MG. Rua Francisco Monteiro Dias Nº 380. Musculação de alta performance, funcional e acompanhamento de professores. WhatsApp: (35) 99135-9857.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
