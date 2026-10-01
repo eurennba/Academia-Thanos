@@ -94,7 +94,7 @@ export const GYM_INFO = {
 
   hours: {
     weekdays: "05:30 às 22:00",
-    saturday: "07:00 às 16:00",
+    saturday: "05:00 às 12:00",
     sunday: "Fechado",
     holidays: "08:00 às 12:00",
     sundayAndHolidays: "Domingos: Fechado | Feriados: 08:00 às 12:00",
@@ -143,7 +143,7 @@ export const MODALITIES: Modality[] = [
     image: "/images/modalities_musculacao_1790776951324.jpg",
     intensity: "Muito Alta",
     coachName: "Prof. Vinicius & Prof. Presley",
-    scheduleSummary: "Seg a Sex: 05:30 às 22:00 | Sáb: 07:00 às 16:00"
+    scheduleSummary: "Seg a Sex: 05:30 às 22:00 | Sáb: 05:00 às 12:00"
   },
   {
     id: "funcional",
@@ -202,8 +202,9 @@ export const SCHEDULE_BY_DAY: Record<string, ClassScheduleItem[]> = {
     { id: "se3", time: "18:00 - 19:00", modality: "Super Circuito Final de Semana", coach: "Presley & Vinicius", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" }
   ],
   "Sábado": [
-    { id: "sa1", time: "08:00 - 09:15", modality: "Super Aulão Funcional Thanos", coach: "Professores Vinicius & Presley", room: "Arena Funcional", level: "Aberto a todos", duration: "75m" },
-    { id: "sa2", time: "09:30 - 16:00", modality: "Musculação Livre com Monitor", coach: "Vinicius & Presley", room: "Sala Musculação", level: "Geral", duration: "Livre" }
+    { id: "sa1", time: "05:00 - 08:00", modality: "Musculação Matinal & Orientação Técnica", coach: "Prof. Vinicius & Prof. Presley", room: "Sala Musculação", level: "Geral", duration: "Livre" },
+    { id: "sa2", time: "08:00 - 09:15", modality: "Super Aulão Funcional Thanos", coach: "Professores Vinicius & Presley", room: "Arena Funcional", level: "Aberto a todos", duration: "75m" },
+    { id: "sa3", time: "09:30 - 12:00", modality: "Musculação Livre com Monitor", coach: "Prof. Vinicius & Prof. Presley", room: "Sala Musculação", level: "Geral", duration: "Livre" }
   ],
   "Domingo": [],
   "Feriados": [

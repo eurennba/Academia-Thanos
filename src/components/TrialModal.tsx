@@ -144,9 +144,10 @@ Podemos confirmar meu acesso? Obrigado!`;
                     onChange={(e) => setPreferredShift(e.target.value)}
                     className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-purple-400"
                   >
-                    <option value="Manhã (06:00 às 11:00)">Manhã (06:00 às 11:00)</option>
-                    <option value="Tarde (14:00 às 18:00)">Tarde (14:00 às 18:00)</option>
+                    <option value="Manhã (05:30 às 12:00)">Manhã (05:30 às 12:00)</option>
+                    <option value="Tarde (12:00 às 18:00)">Tarde (12:00 às 18:00)</option>
                     <option value="Noite (18:00 às 22:00)">Noite (18:00 às 22:00)</option>
+                    <option value="Sábado (05:00 às 12:00)">Sábado (05:00 às 12:00)</option>
                   </select>
                 </div>
               </div>

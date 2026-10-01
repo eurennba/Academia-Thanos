@@ -32,7 +32,7 @@ export const Schedule: React.FC = () => {
 
           <div className="mt-4 md:mt-0 text-xs text-zinc-400 flex items-center gap-2 bg-[#0f0c18] px-3.5 py-2 rounded-lg border border-purple-900/40">
             <Clock className="w-4 h-4 text-purple-400" />
-            <span>Seg a Sex: <strong>05:30 às 22:00</strong> · Sáb: <strong>07:00 às 16:00</strong> · Feriados: <strong>08:00 a 12:00</strong></span>
+            <span>Seg a Sex: <strong>05:30 às 22:00</strong> · Sáb: <strong>05:00 às 12:00</strong> · Feriados: <strong>08:00 a 12:00</strong></span>
           </div>
         </div>
 
