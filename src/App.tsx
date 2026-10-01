@@ -11,7 +11,6 @@ import { Testimonials } from './components/Testimonials';
 import { LocationSection } from './components/LocationSection';
 import { FaqSection } from './components/FaqSection';
 import { Footer } from './components/Footer';
-import { FloatingWhatsApp } from './components/FloatingWhatsApp';
 import { TrialModal } from './components/TrialModal';
 
 export default function App() {
@@ -78,9 +77,6 @@ export default function App() {
 
       {/* Footer */}
       <Footer />
-
-      {/* Floating WhatsApp Quick Action */}
-      <FloatingWhatsApp />
 
       {/* Free Trial Class Modal */}
       <TrialModal
