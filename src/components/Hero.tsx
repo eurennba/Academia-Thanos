@@ -14,10 +14,13 @@ export const Hero: React.FC<HeroProps> = ({ onOpenTrialModal }) => {
       {/* Background Image with Cinematic Purple Scrim */}
       <div className="absolute inset-0 z-0">
         <img
-          src="/src/assets/images/hero_thanos_gym_1790776930154.jpg"
+          src="/images/hero_thanos_gym_1790776930154.jpg"
           alt="Academia Thanos Estrutura de Musculação e Alta Performance em Guaranésia"
           className="w-full h-full object-cover object-center brightness-45 scale-105"
           referrerPolicy="no-referrer"
+          onError={(e) => {
+            (e.currentTarget as HTMLImageElement).src = "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1600&auto=format&fit=crop";
+          }}
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#09090d] via-[#09090d]/85 to-[#09090d]/50" />
         <div className="absolute inset-0 bg-radial from-purple-700/20 via-transparent to-transparent pointer-events-none" />

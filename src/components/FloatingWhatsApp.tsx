@@ -54,6 +54,12 @@ export const FloatingWhatsApp: React.FC = () => {
                       alt={c.name}
                       className="w-full h-full object-cover"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src =
+                          c.id === 'vinicius'
+                            ? 'https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=200&auto=format&fit=crop'
+                            : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=200&auto=format&fit=crop';
+                      }}
                     />
                   </div>
                   <div>

@@ -38,6 +38,12 @@ export const Coaches: React.FC<CoachesProps> = ({ onOpenTrialModal }) => {
                       alt={`Foto do ${coach.name}`}
                       className="w-full h-full object-cover object-center transition-transform duration-300"
                       referrerPolicy="no-referrer"
+                      onError={(e) => {
+                        (e.currentTarget as HTMLImageElement).src =
+                          coach.id === 'vinicius'
+                            ? 'https://images.unsplash.com/photo-1567013127542-490d757e51fc?q=80&w=400&auto=format&fit=crop'
+                            : 'https://images.unsplash.com/photo-1534528741775-53994a69daeb?q=80&w=400&auto=format&fit=crop';
+                      }}
                     />
                   </div>
 

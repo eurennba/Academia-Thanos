@@ -114,7 +114,7 @@ export const COACHES: Coach[] = [
     whatsappMessage: "Olá Professor Vinicius! Estive no site da Academia Thanos e gostaria de saber mais sobre os treinos e acompanhamento em Guaranésia.",
     bio: "Professor responsável pela Academia Thanos em Guaranésia. Especialista em treinos de hipertrofia, ganho de força e acompanhamento técnico individualizado para garantir sua execução perfeita.",
     experienceYears: 8,
-    image: "/src/assets/images/coach_vinicius_fair_1790856795681.jpg"
+    image: "/images/coach_vinicius_fair_1790856795681.jpg"
   },
   {
     id: "presley",
@@ -128,7 +128,7 @@ export const COACHES: Coach[] = [
     whatsappMessage: "Olá Professor Presley! Estive no site da Academia Thanos e gostaria de saber mais sobre os treinos e acompanhamento em Guaranésia.",
     bio: "Professor responsável pela Academia Thanos em Guaranésia. Foco em metodologia dinâmica, queima calórica, fortalecimento muscular e evolução constante de cada aluno.",
     experienceYears: 8,
-    image: "/src/assets/images/coach_presley_photo_1790856196691.jpg"
+    image: "/images/coach_presley_photo_1790856196691.jpg"
   }
 ];
 
@@ -140,7 +140,7 @@ export const MODALITIES: Modality[] = [
     category: "Força Pura",
     description: "Equipamentos articulados de primeira linha, anilhas olímpicas, halteres pesados e os professores Vinicius e Presley sempre presentes no salão para instruir sua execução em cada repetição.",
     features: ["Maquinário com biomecânica anatômica", "Área de peso livre completa", "Fichas de treino personalizadas", "Acompanhamento postural em tempo real"],
-    image: "/src/assets/images/modalities_musculacao_1790776951324.jpg",
+    image: "/images/modalities_musculacao_1790776951324.jpg",
     intensity: "Muito Alta",
     coachName: "Prof. Vinicius & Prof. Presley",
     scheduleSummary: "Seg a Sex: 05:30 às 22:00 | Sáb: 07:00 às 16:00"
@@ -151,7 +151,7 @@ export const MODALITIES: Modality[] = [
     category: "Condicionamento & Queima",
     description: "Circuitos intensos para queima calórica, aumento de resistência cardiovascular e fortalecimento do abdômen e pernas. Treinos dinâmicos e envolventes sob orientação direta.",
     features: ["Kettlebells, cordas navais e trenó", "Turmas com acompanhamento próximo", "Melhora de agilidade e mobilidade", "Acessível para iniciantes e avançados"],
-    image: "/src/assets/images/modalities_combat_cross_1790776961214.jpg",
+    image: "/images/modalities_combat_cross_1790776961214.jpg",
     intensity: "Alta",
     coachName: "Prof. Presley & Prof. Vinicius",
     scheduleSummary: "Turmas manhã, tarde e noite"
@@ -162,7 +162,7 @@ export const MODALITIES: Modality[] = [
     category: "Atendimento 1-on-1",
     description: "Acelere sua transformação corporal com atenção individualizada de um dos nossos professores responsáveis durante 100% da sua sessão de treino.",
     features: ["Treinos milimetricamente ajustados", "Correção minuciosa de cada exercício", "Horários exclusivos a combinar", "Suporte contínuo via WhatsApp"],
-    image: "/src/assets/images/coach_personal_training_1790776971204.jpg",
+    image: "/images/coach_personal_training_1790776971204.jpg",
     intensity: "Personalizada",
     coachName: "Prof. Vinicius / Prof. Presley",
     scheduleSummary: "Horário exclusivo a combinar"

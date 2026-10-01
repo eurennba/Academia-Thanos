@@ -77,6 +77,14 @@ export const Modalities: React.FC<ModalitiesProps> = ({ onOpenTrialModal }) => {
                   alt={item.title}
                   className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 brightness-75"
                   referrerPolicy="no-referrer"
+                  onError={(e) => {
+                    (e.currentTarget as HTMLImageElement).src =
+                      item.id === 'musculacao'
+                        ? 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?q=80&w=800&auto=format&fit=crop'
+                        : item.id === 'funcional'
+                        ? 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?q=80&w=800&auto=format&fit=crop'
+                        : 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?q=80&w=800&auto=format&fit=crop';
+                  }}
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#0f0c18] via-[#0f0c18]/40 to-transparent" />
                 
