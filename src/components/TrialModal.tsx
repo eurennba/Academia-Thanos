@@ -97,7 +97,7 @@ Podemos confirmar meu acesso? Obrigado!`;
                     placeholder="Ex: João da Silva"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl pl-9 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400"
+                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl pl-9 pr-4 py-3 sm:py-2.5 text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400"
                   />
                 </div>
               </div>
@@ -114,7 +114,7 @@ Podemos confirmar meu acesso? Obrigado!`;
                     placeholder="(35) 99999-9999"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl pl-9 pr-4 py-2.5 text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400"
+                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl pl-9 pr-4 py-3 sm:py-2.5 text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400"
                   />
                 </div>
               </div>
@@ -127,7 +127,7 @@ Podemos confirmar meu acesso? Obrigado!`;
                   <select
                     value={modality}
                     onChange={(e) => setModality(e.target.value)}
-                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-purple-400"
+                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-3 sm:py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-purple-400"
                   >
                     <option value="Musculação & Hipertrofia">Musculação & Hipertrofia</option>
                     <option value="Treinamento Funcional">Treinamento Funcional</option>
@@ -142,7 +142,7 @@ Podemos confirmar meu acesso? Obrigado!`;
                   <select
                     value={preferredShift}
                     onChange={(e) => setPreferredShift(e.target.value)}
-                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-purple-400"
+                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-3 sm:py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-purple-400"
                   >
                     <option value="Manhã (05:30 às 12:00)">Manhã (05:30 às 12:00)</option>
                     <option value="Tarde (12:00 às 18:00)">Tarde (12:00 às 18:00)</option>
@@ -159,7 +159,7 @@ Podemos confirmar meu acesso? Obrigado!`;
                 <select
                   value={preferredDate}
                   onChange={(e) => setPreferredDate(e.target.value)}
-                  className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-2.5 text-xs text-white focus:outline-none focus:border-purple-400"
+                  className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-3 sm:py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-purple-400"
                 >
                   <option value="Hoje">Hoje</option>
                   <option value="Amanhã">Amanhã</option>

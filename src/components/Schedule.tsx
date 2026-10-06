@@ -37,12 +37,12 @@ export const Schedule: React.FC = () => {
         </div>
 
         {/* Day Selector Tabs */}
-        <div className="flex items-center gap-1.5 p-1.5 bg-black/60 border border-purple-900/50 rounded-xl overflow-x-auto no-scrollbar mb-8">
+        <div className="flex items-center gap-1.5 p-1.5 bg-black/60 border border-purple-900/50 rounded-xl overflow-x-auto no-scrollbar mb-8 touch-pan-x">
           {days.map((day) => (
             <button
               key={day}
               onClick={() => setSelectedDay(day)}
-              className={`flex-1 min-w-[110px] py-2.5 px-3 text-xs sm:text-sm font-semibold rounded-lg transition-all text-center whitespace-nowrap ${
+              className={`flex-1 min-w-[105px] py-2 sm:py-2.5 px-2.5 sm:px-3 text-xs sm:text-sm font-semibold rounded-lg transition-all text-center whitespace-nowrap cursor-pointer ${
                 selectedDay === day
                   ? day === 'Domingo'
                     ? 'bg-rose-900/80 text-white shadow-md shadow-rose-950/40 font-bold border border-rose-500/50'
@@ -118,19 +118,19 @@ export const Schedule: React.FC = () => {
                 </div>
 
                 {/* Coach & Reservation Action */}
-                <div className="flex items-center justify-between sm:justify-end gap-4 sm:w-1/3 pt-3 sm:pt-0 border-t sm:border-t-0 border-purple-950/60">
-                  <div className="text-left sm:text-right">
-                    <div className="text-xs text-zinc-400">Professor:</div>
-                    <div className="text-xs sm:text-sm font-semibold text-zinc-200">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between sm:justify-end gap-3 sm:gap-4 sm:w-1/3 pt-3 sm:pt-0 border-t sm:border-t-0 border-purple-950/60">
+                  <div className="flex sm:flex-col items-center sm:items-end justify-between sm:justify-start">
+                    <span className="text-xs text-zinc-400">Professor:</span>
+                    <span className="text-xs sm:text-sm font-semibold text-zinc-200">
                       {c.coach}
-                    </div>
+                    </span>
                   </div>
 
                   <button
                     onClick={() => openWhatsApp(`Olá Professor! Gostaria de reservar minha presença na aula de *${c.modality}* na *${selectedDay}* às *${c.time}* com o professor ${c.coach} na Academia Thanos de Guaranésia.`)}
-                    className="flex items-center gap-1.5 py-2 px-3 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-lg transition-colors whitespace-nowrap active:scale-95 border border-purple-400/30 shadow-sm shadow-purple-900/30"
+                    className="w-full sm:w-auto flex items-center justify-center gap-1.5 py-2.5 sm:py-2 px-3 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-lg transition-colors active:scale-95 border border-purple-400/30 shadow-sm shadow-purple-900/30 cursor-pointer"
                   >
-                    <MessageCircle className="w-3.5 h-3.5 fill-white/20" />
+                    <MessageCircle className="w-3.5 h-3.5 fill-white/20 shrink-0" />
                     <span>Reservar no WhatsApp</span>
                   </button>
                 </div>

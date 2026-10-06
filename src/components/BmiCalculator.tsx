@@ -123,7 +123,7 @@ Gostaria de agendar uma avaliação física e começar os treinos na unidade da 
             </h3>
 
             {/* Gender and Goal */}
-            <div className="grid grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               <div>
                 <label className="block text-xs font-semibold text-zinc-400 uppercase tracking-wider mb-2">
                   Sexo Biológico
@@ -134,7 +134,7 @@ Gostaria de agendar uma avaliação física e começar os treinos na unidade da 
                       key={g}
                       type="button"
                       onClick={() => setGender(g)}
-                      className={`flex-1 py-2 text-xs font-bold rounded-lg border transition-all capitalize ${
+                      className={`flex-1 py-2.5 text-xs font-bold rounded-lg border transition-all capitalize cursor-pointer ${
                         gender === g
                           ? 'bg-purple-600 text-white border-purple-400'
                           : 'bg-black/60 text-zinc-400 border-purple-900/40 hover:text-white'
@@ -153,7 +153,7 @@ Gostaria de agendar uma avaliação física e começar os treinos na unidade da 
                 <select
                   value={goal}
                   onChange={(e) => setGoal(e.target.value as any)}
-                  className="w-full bg-black/60 border border-purple-900/50 text-white rounded-lg px-3 py-2 text-xs font-medium focus:outline-none focus:border-purple-400"
+                  className="w-full bg-black/60 border border-purple-900/50 text-white rounded-lg px-3 py-2.5 text-xs font-medium focus:outline-none focus:border-purple-400"
                 >
                   <option value="hipertrofia">Ganho de Massa (Hipertrofia)</option>
                   <option value="emagrecimento">Emagrecimento / Queima</option>
@@ -288,9 +288,9 @@ Gostaria de agendar uma avaliação física e começar os treinos na unidade da 
             <div className="pt-4 border-t border-purple-900/40">
               <button
                 onClick={handleSendToCoach}
-                className="w-full flex items-center justify-center gap-2.5 py-3.5 px-4 text-sm font-extrabold text-white bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-lg shadow-purple-900/50 active:scale-95 border border-purple-400/40"
+                className="w-full flex items-center justify-center gap-2.5 py-3.5 px-3 sm:px-4 text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-lg shadow-purple-900/50 active:scale-95 border border-purple-400/40 text-center cursor-pointer"
               >
-                <MessageCircle className="w-5 h-5 fill-white/20" />
+                <MessageCircle className="w-4 sm:w-5 h-4 sm:h-5 fill-white/20 shrink-0" />
                 <span>Enviar meu Perfil pro Professor no WhatsApp</span>
               </button>
               <div className="text-center text-[11px] text-zinc-400 mt-2">

@@ -129,7 +129,7 @@ export const Footer: React.FC = () => {
               Criado por <span className="text-purple-400 font-bold hover:text-purple-300 transition-colors">Abnner Camargo</span>
             </span>
           </div>
-          <div className="flex items-center gap-4">
+          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
             <a href="#modalidades" className="hover:text-purple-300">Modalidades</a>
             <span>·</span>
             <a href="#planos" className="hover:text-purple-300">Planos</a>

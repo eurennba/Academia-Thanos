@@ -103,9 +103,9 @@ export const Coaches: React.FC<CoachesProps> = ({ onOpenTrialModal }) => {
 
                 <button
                   onClick={() => openWhatsApp(coach.whatsappMessage, coach.phone)}
-                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-md shadow-purple-900/30 active:scale-95 whitespace-nowrap border border-purple-400/30"
+                  className="w-full flex items-center justify-center gap-2 py-2.5 px-3 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-md shadow-purple-900/30 active:scale-95 border border-purple-400/30 cursor-pointer"
                 >
-                  <MessageCircle className="w-3.5 h-3.5 fill-white/20" />
+                  <MessageCircle className="w-3.5 h-3.5 fill-white/20 shrink-0" />
                   <span>Conversar no WhatsApp ({coach.formattedPhone || (coach.phone === '5535997757577' ? '35 99775-7577' : '35 99135-9857')})</span>
                 </button>
 
@@ -136,9 +136,9 @@ export const Coaches: React.FC<CoachesProps> = ({ onOpenTrialModal }) => {
 
           <button
             onClick={() => openWhatsApp("Olá Professores Vinicius e Presley! Gostaria de tirar dúvidas sobre a Academia Thanos em Guaranésia.")}
-            className="flex items-center gap-2.5 px-6 py-3 text-sm font-extrabold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-lg shadow-purple-900/40 active:scale-95 whitespace-nowrap border border-purple-400/30"
+            className="w-full md:w-auto flex items-center justify-center gap-2.5 px-6 py-3.5 sm:py-3 text-xs sm:text-sm font-extrabold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-lg shadow-purple-900/40 active:scale-95 border border-purple-400/30 cursor-pointer"
           >
-            <MessageCircle className="w-4 h-4 fill-white/20" />
+            <MessageCircle className="w-4 h-4 fill-white/20 shrink-0" />
             <span>Falar com os Professores no WhatsApp</span>
           </button>
         </div>

@@ -53,16 +53,16 @@ export const LocationBanner: React.FC = () => {
           </div>
 
           {/* Quick Actions for directions & WhatsApp */}
-          <div className="lg:col-span-5 flex flex-wrap items-center justify-start lg:justify-end gap-2.5">
+          <div className="lg:col-span-5 flex flex-wrap items-center justify-start lg:justify-end gap-2 sm:gap-2.5">
             <button
               onClick={handleCopy}
-              className="flex items-center gap-2 px-3.5 py-2 text-xs font-semibold text-zinc-300 hover:text-white bg-black/60 hover:bg-purple-950/40 border border-purple-900/50 rounded-lg transition-colors active:scale-95 whitespace-nowrap"
+              className="flex-1 sm:flex-initial flex items-center justify-center gap-2 px-3.5 py-2 text-xs font-semibold text-zinc-300 hover:text-white bg-black/60 hover:bg-purple-950/40 border border-purple-900/50 rounded-lg transition-colors active:scale-95 cursor-pointer"
               title="Copiar endereço para GPS"
             >
               {copied ? (
                 <>
                   <Check className="w-3.5 h-3.5 text-emerald-400" />
-                  <span className="text-emerald-400">Endereço Copiado!</span>
+                  <span className="text-emerald-400">Copiado!</span>
                 </>
               ) : (
                 <>
@@ -76,7 +76,7 @@ export const LocationBanner: React.FC = () => {
               href={GYM_INFO.location.googleMapsUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-black/60 hover:bg-purple-950/50 border border-purple-900/50 rounded-lg transition-colors active:scale-95 whitespace-nowrap"
+              className="flex-1 sm:flex-initial flex items-center justify-center gap-1.5 px-3.5 py-2 text-xs font-semibold text-white bg-black/60 hover:bg-purple-950/50 border border-purple-900/50 rounded-lg transition-colors active:scale-95"
             >
               <Navigation className="w-3.5 h-3.5 text-purple-400" />
               <span>Ver no Maps</span>
@@ -85,9 +85,9 @@ export const LocationBanner: React.FC = () => {
 
             <button
               onClick={() => openWhatsApp(`Olá Professor! Gostaria de saber como chegar na Academia Thanos na ${GYM_INFO.location.street} Nº ${GYM_INFO.location.number} em ${GYM_INFO.location.city} - MG.`)}
-              className="flex items-center gap-1.5 px-3.5 py-2 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-lg transition-colors active:scale-95 shadow-md shadow-purple-900/40 whitespace-nowrap border border-purple-400/30"
+              className="w-full sm:w-auto flex items-center justify-center gap-1.5 px-3.5 py-2.5 sm:py-2 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-lg transition-colors active:scale-95 shadow-md shadow-purple-900/40 border border-purple-400/30 cursor-pointer"
             >
-              <MessageCircle className="w-3.5 h-3.5 fill-white/20" />
+              <MessageCircle className="w-3.5 h-3.5 fill-white/20 shrink-0" />
               <span>WhatsApp: (35) 99135-9857</span>
             </button>
           </div>

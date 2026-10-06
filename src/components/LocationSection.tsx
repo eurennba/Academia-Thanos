@@ -128,10 +128,10 @@ export const LocationSection: React.FC = () => {
 
             {/* Action Bar */}
             <div className="pt-4 border-t border-purple-900/40 space-y-3">
-              <div className="flex flex-wrap gap-2.5">
+              <div className="flex flex-col sm:flex-row gap-2.5">
                 <button
                   onClick={handleCopy}
-                  className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 text-xs font-semibold text-white bg-black/60 hover:bg-purple-950/60 rounded-xl transition-colors border border-purple-900/50"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 text-xs font-semibold text-white bg-black/60 hover:bg-purple-950/60 rounded-xl transition-colors border border-purple-900/50 cursor-pointer"
                 >
                   {copied ? (
                     <>
@@ -160,9 +160,9 @@ export const LocationSection: React.FC = () => {
 
               <button
                 onClick={() => openWhatsApp(`Olá Professor! Estou indo para a Academia Thanos em Guaranésia no endereço: ${GYM_INFO.location.street} Nº ${GYM_INFO.location.number}. Pode me passar pontos de referência?`)}
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-md shadow-purple-900/30 active:scale-95 border border-purple-400/30"
+                className="w-full flex items-center justify-center gap-2 py-3 px-3 sm:px-4 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-md shadow-purple-900/30 active:scale-95 border border-purple-400/30 text-center cursor-pointer"
               >
-                <MessageCircle className="w-4 h-4 fill-white/20" />
+                <MessageCircle className="w-4 h-4 fill-white/20 shrink-0" />
                 <span>Pedir Rota ao Professor no WhatsApp ({GYM_INFO.whatsapp.formattedNumber})</span>
               </button>
             </div>

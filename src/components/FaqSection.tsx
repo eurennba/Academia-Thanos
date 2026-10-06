@@ -71,9 +71,9 @@ export const FaqSection: React.FC = () => {
 
           <button
             onClick={() => openWhatsApp("Olá Professor! Li as dúvidas frequentes no site e gostaria de fazer uma pergunta sobre a Academia Thanos em Guaranésia.")}
-            className="flex items-center gap-2 px-5 py-2.5 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-md shadow-purple-900/30 active:scale-95 whitespace-nowrap border border-purple-400/30"
+            className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-md shadow-purple-900/30 active:scale-95 border border-purple-400/30 cursor-pointer"
           >
-            <MessageCircle className="w-4 h-4 fill-white/20" />
+            <MessageCircle className="w-4 h-4 fill-white/20 shrink-0" />
             <span>Chamar Professor no WhatsApp</span>
           </button>
         </div>

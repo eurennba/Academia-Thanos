@@ -41,8 +41,7 @@ export interface PricingPlan {
   tagline: string;
   popular?: boolean;
   priceMonthly: number;
-  priceQuarterly: number;
-  priceAnnualMonthly: number;
+  priceAnnualMonthly?: number;
   benefits: string[];
   highlight: string;
 }
@@ -220,8 +219,6 @@ export const PRICING_PLANS: PricingPlan[] = [
     name: "Plano Mensal",
     tagline: "Treine com total liberdade, sem taxa de adesão ou fidelidade",
     priceMonthly: 80.00,
-    priceQuarterly: 75.00,
-    priceAnnualMonthly: 70.00,
     highlight: "Sem Fidelidade",
     benefits: [
       "Acesso completo à área de musculação",
@@ -238,8 +235,6 @@ export const PRICING_PLANS: PricingPlan[] = [
     tagline: "O plano mais completo para máxima transformação física",
     popular: true,
     priceMonthly: 90.00,
-    priceQuarterly: 85.00,
-    priceAnnualMonthly: 80.00,
     highlight: "Mais Escolhido",
     benefits: [
       "Musculação Livre + Acesso às Aulas Coletivas",

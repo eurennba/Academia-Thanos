@@ -39,11 +39,11 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#09090d] text-zinc-100 flex flex-col font-sans selection:bg-purple-600 selection:text-white">
+    <div className="min-h-screen bg-[#09090d] text-zinc-100 flex flex-col font-sans selection:bg-purple-600 selection:text-white overflow-x-hidden w-full max-w-full">
       {/* Top Bar Navigation */}
       <Navbar onOpenTrialModal={() => handleOpenTrialModal()} />
 
-      <main className="flex-1">
+      <main className="flex-1 w-full max-w-full overflow-x-hidden">
         {/* Hero Section in Thanos Purple & Black with direct WhatsApp action */}
         <Hero onOpenTrialModal={() => handleOpenTrialModal()} />
 
