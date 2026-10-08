@@ -1,145 +1,91 @@
 import React from 'react';
-import { MapPin, MessageCircle } from 'lucide-react';
 import { GYM_INFO } from '../data/gymData';
 import { openWhatsApp } from '../utils/whatsapp';
-import { ThanosLogo } from './ThanosLogo';
+import { MessageCircle, ShieldCheck } from 'lucide-react';
 
 export const Footer: React.FC = () => {
+  const currentYear = new Date().getFullYear();
+
   return (
-    <footer className="bg-[#050408] text-zinc-400 text-xs border-t border-purple-950/60 pt-16 pb-12">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-          
-          {/* Col 1: Brand & Philosophy */}
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="w-11 h-11 rounded-full overflow-hidden border border-purple-500/50 bg-black p-0.5 shrink-0">
-                <ThanosLogo className="w-full h-full" />
+    <footer className="bg-[#05030a] border-t border-purple-950/60 py-16 text-zinc-400 text-sm">
+      <div className="w-[90%] max-w-[1200px] mx-auto px-5">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 mb-12">
+          {/* Brand Info */}
+          <div className="md:col-span-1 space-y-4">
+            <a href="#home" className="text-2xl font-bold flex items-center tracking-tighter">
+              <div className="text-white font-thin tracking-widest">
+                ACADEMIA <span className="font-bold text-purple-400">THANOS</span>
               </div>
-              <span className="text-xl font-extrabold tracking-tight font-display text-white">
-                ACADEMIA <span className="text-purple-500">THANOS</span>
-              </span>
-            </div>
-
-            <p className="text-zinc-400 text-xs leading-relaxed">
-              O seu centro de musculação e alta performance em Guaranésia - MG. Acompanhamento com professores credenciados pelo CREF, ambiente motivador e foco nos seus objetivos.
+            </a>
+            <p className="text-xs text-zinc-400 font-light leading-relaxed">
+              Musculação de alta performance, biomecânica e acompanhamento profissional em Guaranésia - MG.
             </p>
-
-            <div className="pt-2 text-zinc-400 text-[11px]">
-              Guaranésia - MG · Registro CREF
+            <div className="flex items-center gap-2 text-xs text-purple-400 font-semibold">
+              <ShieldCheck className="w-4 h-4" />
+              <span>100% Professores Credenciados CREF</span>
             </div>
           </div>
 
-          {/* Col 2: Endereço & Localização Detalhada */}
+          {/* Quick Links */}
           <div className="space-y-3">
-            <div className="text-xs font-bold uppercase tracking-wider text-purple-300">
-              Endereço da Unidade
-            </div>
-            
-            <div className="space-y-1.5 text-zinc-300">
-              <div className="font-semibold text-white flex items-start gap-1.5">
-                <MapPin className="w-4 h-4 text-purple-400 shrink-0 mt-0.5" />
-                <span>
-                  {GYM_INFO.location.street} N ° {GYM_INFO.location.number}
-                </span>
-              </div>
-              <div className="pl-5 text-zinc-400">
-                Bairro {GYM_INFO.location.neighborhood}
-              </div>
-              <div className="pl-5 text-purple-300 font-semibold">
-                {GYM_INFO.location.city} - {GYM_INFO.location.state}
-              </div>
-              <div className="pl-5 text-zinc-400 font-mono text-[11px]">
-                CEP {GYM_INFO.location.zipCode}
-              </div>
-            </div>
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+              Navegação
+            </h4>
+            <ul className="space-y-2 text-xs font-light">
+              <li><a href="#home" className="hover:text-purple-400 transition-colors">Início</a></li>
+              <li><a href="#about" className="hover:text-purple-400 transition-colors">Sobre a Thanos</a></li>
+              <li><a href="#modalidades" className="hover:text-purple-400 transition-colors">Modalidades</a></li>
+              <li><a href="#horarios" className="hover:text-purple-400 transition-colors">Horários & Feriados</a></li>
+              <li><a href="#planos" className="hover:text-purple-400 transition-colors">Planos & Valores</a></li>
+              <li><a href="#professores" className="hover:text-purple-400 transition-colors">Professores</a></li>
+              <li><a href="#contact" className="hover:text-purple-400 transition-colors">Contato</a></li>
+            </ul>
+          </div>
 
-            <div className="pt-2">
-              <a
-                href={GYM_INFO.location.googleMapsUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-purple-400 hover:underline text-[11px] font-semibold"
+          {/* Horários */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+              Horários de Treino
+            </h4>
+            <ul className="space-y-2 text-xs font-light">
+              <li>Segunda a Sexta: <strong className="text-white font-normal">{GYM_INFO.hours.weekdays}</strong></li>
+              <li>Sábados: <strong className="text-white font-normal">{GYM_INFO.hours.saturday}</strong></li>
+              <li>Feriados: <strong className="text-purple-300 font-bold">{GYM_INFO.hours.holidays}</strong></li>
+              <li>Domingos: <strong className="text-zinc-500 font-normal">Fechado</strong></li>
+            </ul>
+          </div>
+
+          {/* Endereço & Contato */}
+          <div className="space-y-3">
+            <h4 className="text-xs font-bold text-white uppercase tracking-wider">
+              Localização & Contato
+            </h4>
+            <p className="text-xs font-light leading-relaxed">
+              {GYM_INFO.location.street}, Nº {GYM_INFO.location.number}<br />
+              Bairro {GYM_INFO.location.neighborhood}<br />
+              Guaranésia - MG · CEP {GYM_INFO.location.zipCode}
+            </p>
+            <div className="pt-1">
+              <button
+                onClick={() => openWhatsApp(GYM_INFO.whatsapp.defaultMessage)}
+                className="inline-flex items-center gap-1.5 text-xs text-purple-400 hover:text-white font-semibold transition-colors"
               >
-                Abrir no Google Maps →
-              </a>
+                <MessageCircle className="w-3.5 h-3.5" />
+                <span>WhatsApp: {GYM_INFO.whatsapp.formattedNumber}</span>
+              </button>
             </div>
-          </div>
-
-          {/* Col 3: Horários de Treino */}
-          <div className="space-y-3">
-            <div className="text-xs font-bold uppercase tracking-wider text-purple-300">
-              Horários de Funcionamento
-            </div>
-
-            <div className="space-y-2 text-zinc-300">
-              <div className="flex justify-between border-b border-purple-950/60 pb-1.5">
-                <span className="text-zinc-400">Segunda a Sexta:</span>
-                <span className="font-medium text-white">{GYM_INFO.hours.weekdays}</span>
-              </div>
-              <div className="flex justify-between border-b border-purple-950/60 pb-1.5">
-                <span className="text-zinc-400">Sábado:</span>
-                <span className="font-medium text-white">{GYM_INFO.hours.saturday}</span>
-              </div>
-              <div className="flex justify-between border-b border-purple-950/60 pb-1.5">
-                <span className="text-zinc-400">Domingos:</span>
-                <span className="font-semibold text-rose-400">{GYM_INFO.hours.sunday}</span>
-              </div>
-              <div className="flex justify-between border-b border-purple-950/60 pb-1.5">
-                <span className="text-zinc-400">Feriados:</span>
-                <span className="font-semibold text-purple-300">{GYM_INFO.hours.holidays}</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Col 4: Contato Direto & WhatsApp do Professor */}
-          <div className="space-y-3">
-            <div className="text-xs font-bold uppercase tracking-wider text-purple-300">
-              Contato com o Professor
-            </div>
-
-            <p className="text-zinc-400 text-xs">
-              Tire dúvidas diretamente com a equipe técnica da Academia Thanos:
-            </p>
-
-            <button
-              onClick={() => openWhatsApp(GYM_INFO.whatsapp.defaultMessage)}
-              className="w-full flex items-center justify-center gap-2 py-3 px-4 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-md shadow-purple-900/30 active:scale-95 border border-purple-400/30"
-            >
-              <MessageCircle className="w-4 h-4 fill-white/20" />
-              <span>WhatsApp: {GYM_INFO.whatsapp.formattedNumber}</span>
-            </button>
-
-            <div className="text-[11px] text-zinc-400 text-center">
-              Atendimento em tempo real durante horário de funcionamento
-            </div>
-          </div>
-
-        </div>
-
-        {/* Quiet Bottom Bar */}
-        <div className="pt-8 border-t border-purple-950/80 flex flex-col sm:flex-row items-center justify-between gap-4 text-zinc-400 text-[11px]">
-          <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2.5 text-center sm:text-left">
-            <span>
-              © {new Date().getFullYear()} Academia Thanos · {GYM_INFO.location.street} N ° {GYM_INFO.location.number} - {GYM_INFO.location.city} - MG.
-            </span>
-            <span className="hidden sm:inline text-zinc-600">·</span>
-            <span className="text-zinc-300">
-              Criado por <span className="text-purple-400 font-bold hover:text-purple-300 transition-colors">Abnner Camargo</span>
-            </span>
-          </div>
-          <div className="flex flex-wrap items-center justify-center gap-x-3 gap-y-1">
-            <a href="#modalidades" className="hover:text-purple-300">Modalidades</a>
-            <span>·</span>
-            <a href="#planos" className="hover:text-purple-300">Planos</a>
-            <span>·</span>
-            <a href="#horarios" className="hover:text-purple-300">Horários</a>
-            <span>·</span>
-            <a href="#localizacao" className="hover:text-purple-300">Localização</a>
           </div>
         </div>
 
+        {/* Bottom copyright line in Purple & White */}
+        <div className="pt-8 border-t border-purple-950/60 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs font-light text-zinc-500">
+          <div>
+            © {currentYear} Academia Thanos. Todos os direitos reservados. Guaranésia - MG.
+          </div>
+          <div>
+            Rua Francisco Monteiro Dias Nº 380 · WhatsApp: (35) 99135-9857
+          </div>
+        </div>
       </div>
     </footer>
   );

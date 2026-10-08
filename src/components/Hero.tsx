@@ -1,8 +1,7 @@
 import React from 'react';
-import { MessageCircle, Flame, ArrowRight, MapPin } from 'lucide-react';
+import { MessageCircle, Flame } from 'lucide-react';
 import { GYM_INFO } from '../data/gymData';
 import { openWhatsApp } from '../utils/whatsapp';
-import { ThanosLogo } from './ThanosLogo';
 
 interface HeroProps {
   onOpenTrialModal: () => void;
@@ -10,122 +9,84 @@ interface HeroProps {
 
 export const Hero: React.FC<HeroProps> = ({ onOpenTrialModal }) => {
   return (
-    <section className="relative min-h-[88vh] flex items-center justify-center bg-[#09090d] overflow-hidden pt-8 pb-16">
-      {/* Background Image with Cinematic Purple Scrim */}
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/images/hero_thanos_gym_1790776930154.jpg"
-          alt="Academia Thanos Estrutura de Musculação e Alta Performance em Guaranésia"
-          className="w-full h-full object-cover object-center brightness-45 scale-105"
-          referrerPolicy="no-referrer"
-          onError={(e) => {
-            (e.currentTarget as HTMLImageElement).src = "https://images.unsplash.com/photo-1534438327276-14e5300c3a48?q=80&w=1600&auto=format&fit=crop";
-          }}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-[#09090d] via-[#09090d]/85 to-[#09090d]/50" />
-        <div className="absolute inset-0 bg-radial from-purple-700/20 via-transparent to-transparent pointer-events-none" />
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="max-w-3xl">
-          {/* Official Emblem + Quality Marker */}
-          <div className="flex items-center gap-3 sm:gap-3.5 mb-5 sm:mb-6">
-            <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-full overflow-hidden border-2 border-purple-500/70 shadow-xl shadow-purple-950/70 bg-black p-0.5 shrink-0">
-              <ThanosLogo className="w-full h-full" />
-            </div>
-            <div>
-              <div className="inline-flex flex-wrap items-center gap-1.5 sm:gap-2 text-[10px] sm:text-xs font-semibold text-purple-400 tracking-wide uppercase bg-purple-950/60 border border-purple-500/30 px-2.5 sm:px-3 py-1 rounded-full backdrop-blur-sm">
-                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping shrink-0" />
-                <span className="text-zinc-200">GUARANÉSIA - MG</span>
-                <span className="text-purple-400">·</span>
-                <span>RUA FRANCISCO MONTEIRO DIAS N° 380</span>
-              </div>
-              <div className="text-[10px] sm:text-[11px] text-zinc-400 font-mono tracking-wider uppercase mt-1">
-                Thanos High Performance Academy
-              </div>
-            </div>
-          </div>
-
-          {/* Main Titan Headline */}
-          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-extrabold text-white tracking-tight font-display leading-[1.1] text-balance mb-4 sm:mb-6">
-            O SEU CORPO MAIS <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-fuchsia-400 to-purple-500">FORTE E IMPARÁVEL</span>.
-          </h1>
-
-          {/* Description */}
-          <p className="text-sm sm:text-lg lg:text-xl text-zinc-300 leading-relaxed max-w-2xl mb-6 sm:mb-8">
-            A academia com melhor infraestrutura de musculação pesada, funcional e acompanhamento de professores credenciados em Guaranésia. Equipamentos biomecânicos e ambiente de alto rendimento.
-          </p>
-
-          {/* Primary Action Zone */}
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4 mb-8 sm:mb-10">
-            <button
-              onClick={() => openWhatsApp(GYM_INFO.whatsapp.defaultMessage)}
-              className="group flex items-center justify-center gap-2.5 sm:gap-3 px-4 sm:px-7 py-3.5 sm:py-4 text-sm sm:text-base font-bold text-white bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-xl shadow-purple-900/40 active:scale-95 border border-purple-400/40 cursor-pointer"
-            >
-              <div className="w-8 h-8 rounded-full bg-white/20 flex items-center justify-center group-hover:scale-110 transition-transform shrink-0">
-                <MessageCircle className="w-4 sm:w-5 h-4 sm:h-5 fill-white/40" />
-              </div>
-              <div className="text-left">
-                <div className="text-[10px] sm:text-xs font-semibold text-purple-200 uppercase tracking-wider">WhatsApp Oficial: (35) 99135-9857</div>
-                <div className="text-xs sm:text-base font-extrabold leading-tight">Falar com o Professor no WhatsApp</div>
-              </div>
-              <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform shrink-0" />
-            </button>
-
-            <button
-              onClick={onOpenTrialModal}
-              className="flex items-center justify-center gap-2 px-5 sm:px-6 py-3.5 sm:py-4 text-xs sm:text-sm font-bold text-white bg-black/70 hover:bg-zinc-900 border border-purple-800/60 hover:border-purple-400/60 rounded-xl transition-all active:scale-95 backdrop-blur-sm shadow-md cursor-pointer"
-            >
-              <Flame className="w-4 h-4 text-purple-400" />
-              <span>Aula Experimental Grátis</span>
-            </button>
-          </div>
-
-          {/* Direct Address Badge for Instant Recognition */}
-          <div className="p-3 sm:p-4 bg-[#110e1c]/90 border border-purple-900/50 rounded-xl backdrop-blur-md flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5 sm:gap-3 text-xs sm:text-sm text-zinc-300">
-            <div className="flex items-center gap-2">
-              <MapPin className="w-4 h-4 text-purple-400 shrink-0" />
-              <span>
-                <strong className="text-white">{GYM_INFO.location.street} N ° {GYM_INFO.location.number}</strong> — <span className="text-purple-300 font-semibold">{GYM_INFO.location.city} - {GYM_INFO.location.state}</span>
-              </span>
-            </div>
-            <a
-              href="#localizacao"
-              className="text-purple-400 hover:text-purple-300 font-semibold underline underline-offset-4 text-xs"
-            >
-              Ver mapa e direções →
-            </a>
-          </div>
+    <section
+      id="home"
+      className="relative pt-36 md:pt-44 pb-20 md:pb-28 min-h-[85vh] flex items-center justify-center bg-cover bg-center bg-no-repeat text-center"
+      style={{
+        backgroundImage:
+          "linear-gradient(rgba(0, 0, 0, 0.88), rgba(10, 5, 20, 0.82)), url('/images/hero_thanos_gym_1790776930154.jpg')",
+      }}
+    >
+      <div className="w-[90%] max-w-[1200px] mx-auto px-5">
+        {/* Subtle badge with official address */}
+        <div className="inline-flex items-center gap-2 mb-6 px-4 py-1.5 rounded-full bg-purple-950/70 border border-purple-500/50 text-xs text-purple-300 tracking-widest uppercase backdrop-blur-md">
+          <span className="w-2 h-2 rounded-full bg-purple-400 animate-ping" />
+          <span className="text-white font-semibold">Guaranésia - MG</span>
+          <span className="text-purple-400">·</span>
+          <span>Rua Francisco Monteiro Dias Nº 380</span>
         </div>
 
-        {/* Hero Trust Numbers Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 mt-8 sm:mt-12 pt-6 sm:pt-8 border-t border-purple-900/30">
-          <div className="flex flex-col">
-            <span className="text-2xl sm:text-3xl font-extrabold text-white font-display tabular-nums">
-              R$ 80,00
-            </span>
-            <span className="text-xs sm:text-sm text-purple-300/80 mt-0.5">Plano Mensal Sem Fidelidade</span>
+        {/* Logo do lado do Título Principal (sem alterar nada da imagem) */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 mb-6">
+          <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 rounded-full overflow-hidden shrink-0 shadow-2xl">
+            <img
+              src="/images/thanos_gym_logo_1790776940958.jpg"
+              alt="Logo Oficial Academia Thanos High Performance Academy"
+              className="w-full h-full object-contain"
+              onError={(e) => {
+                (e.currentTarget as HTMLImageElement).src = '/images/thanos_official_logo.svg';
+              }}
+            />
           </div>
 
-          <div className="flex flex-col">
-            <span className="text-2xl sm:text-3xl font-extrabold text-purple-400 font-display tabular-nums">
-              R$ 90,00
-            </span>
-            <span className="text-xs sm:text-sm text-zinc-400 mt-0.5">Plano Thanos VIP Completo</span>
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold text-white tracking-tight drop-shadow-lg text-center sm:text-left">
+            ACADEMIA <span className="text-purple-400">THANOS</span>
+          </h1>
+        </div>
+
+        {/* Concise and direct paragraph without funcional */}
+        <p className="text-base sm:text-lg md:text-xl text-zinc-200 max-w-[760px] mx-auto mb-10 leading-relaxed font-light opacity-95">
+          Infraestrutura completa de musculação pesada, biomecânica de ponta e acompanhamento técnico de professores credenciados pelo CREF em Guaranésia. Treine com foco e evolução real.
+        </p>
+
+        {/* Action Buttons in Purple & White */}
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-14">
+          <button
+            onClick={onOpenTrialModal}
+            className="w-full sm:w-auto inline-block bg-purple-600 hover:bg-purple-500 text-white px-8 py-3.5 rounded-full font-bold text-base md:text-lg transition-all duration-300 hover:-translate-y-1 hover:scale-105 hover:shadow-[0_0_25px_rgba(168,85,247,0.6)] group border-2 border-purple-500 hover:border-purple-300 cursor-pointer"
+          >
+            AULA EXPERIMENTAL GRATUITA <Flame className="w-4 h-4 inline-block ml-1" />
+          </button>
+
+          <button
+            onClick={() => openWhatsApp(GYM_INFO.whatsapp.defaultMessage)}
+            className="w-full sm:w-auto inline-block bg-[#120e1f] text-white px-8 py-3.5 rounded-full font-bold text-base transition-all duration-300 hover:bg-purple-950 hover:text-purple-300 border-2 border-purple-900/60 hover:border-purple-400 cursor-pointer shadow-md"
+          >
+            <MessageCircle className="w-4 h-4 inline-block mr-2 text-purple-400" />
+            FALAR NO WHATSAPP
+          </button>
+        </div>
+
+        {/* 4 Clean Summary Cards in Purple & White aesthetic */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 sm:gap-4 max-w-3xl mx-auto">
+          <div className="bg-[#120e1f] border border-purple-900/50 rounded-2xl p-4 text-center hover:border-purple-500 transition-colors">
+            <span className="text-xl sm:text-2xl font-bold text-purple-400 block">R$ 80,00</span>
+            <span className="text-xs text-zinc-300 font-light mt-1 block">Plano Mensal Livre</span>
           </div>
 
-          <div className="flex flex-col">
-            <span className="text-2xl sm:text-3xl font-extrabold text-white font-display tabular-nums">
-              100% CREF
-            </span>
-            <span className="text-xs sm:text-sm text-zinc-400 mt-0.5">Professores no Salão</span>
+          <div className="bg-[#120e1f] border border-purple-900/50 rounded-2xl p-4 text-center hover:border-purple-500 transition-colors">
+            <span className="text-xl sm:text-2xl font-bold text-white block">R$ 90,00</span>
+            <span className="text-xs text-purple-300 font-light mt-1 block">Plano Thanos VIP</span>
           </div>
 
-          <div className="flex flex-col">
-            <span className="text-2xl sm:text-3xl font-extrabold text-white font-display tabular-nums flex items-center gap-1">
-              05:30h
-            </span>
-            <span className="text-xs sm:text-sm text-zinc-400 mt-0.5">Abertura Cedo para Treinar</span>
+          <div className="bg-[#120e1f] border border-purple-900/50 rounded-2xl p-4 text-center hover:border-purple-500 transition-colors">
+            <span className="text-xl sm:text-2xl font-bold text-purple-400 block">09h às 12h</span>
+            <span className="text-xs text-zinc-300 font-light mt-1 block">Feriados Abertos</span>
+          </div>
+
+          <div className="bg-[#120e1f] border border-purple-900/50 rounded-2xl p-4 text-center hover:border-purple-500 transition-colors">
+            <span className="text-xl sm:text-2xl font-bold text-white block">100% CREF</span>
+            <span className="text-xs text-zinc-300 font-light mt-1 block">Professores no Salão</span>
           </div>
         </div>
       </div>

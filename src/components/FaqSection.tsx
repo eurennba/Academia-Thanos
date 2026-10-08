@@ -1,83 +1,72 @@
 import React, { useState } from 'react';
-import { HelpCircle, ChevronDown, MessageCircle } from 'lucide-react';
+import { ChevronDown, MessageCircle } from 'lucide-react';
 import { FAQ_ITEMS, GYM_INFO } from '../data/gymData';
 import { openWhatsApp } from '../utils/whatsapp';
+import { SectionHeader } from './SectionHeader';
 
 export const FaqSection: React.FC = () => {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
-  const toggle = (idx: number) => {
-    setOpenIndex(openIndex === idx ? null : idx);
+  const toggleQuestion = (index: number) => {
+    setOpenIndex(openIndex === index ? null : index);
   };
 
   return (
-    <section className="py-20 bg-[#0d0a14] border-b border-purple-900/30">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        
-        {/* Header */}
-        <div className="text-center mb-12">
-          <div className="inline-flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-purple-400 mb-2 bg-purple-950/60 px-3 py-1 rounded-full border border-purple-800/40">
-            <HelpCircle className="w-3.5 h-3.5 text-purple-400" />
-            <span>Tire suas Dúvidas</span>
-            <span className="text-purple-600">·</span>
-            <span>PERGUNTAS FREQUENTES</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight font-display">
-            TUDO SOBRE A <span className="text-purple-400">ACADEMIA THANOS</span>.
-          </h2>
-          <p className="text-sm text-zinc-400 mt-2">
-            Perguntas comuns sobre nossos treinos na Rua Francisco Monteiro Dias Nº 380 em Guaranésia - MG.
-          </p>
-        </div>
+    <section id="faq" className="py-24 bg-[#08050e] border-b border-purple-950/40">
+      <div className="w-[90%] max-w-[1200px] mx-auto px-5">
+        <SectionHeader
+          title="DÚVIDAS FREQUENTES"
+          subtitle="Tudo o que você precisa saber para começar a treinar na Academia Thanos em Guaranésia."
+        />
 
-        {/* FAQ Accordion list */}
-        <div className="space-y-3">
+        <div className="max-w-3xl mx-auto space-y-4">
           {FAQ_ITEMS.map((item, idx) => {
             const isOpen = openIndex === idx;
 
             return (
               <div
                 key={idx}
-                className="bg-[#0f0c18] border border-purple-900/40 rounded-xl overflow-hidden transition-colors"
+                className="bg-[#100c1c] rounded-2xl border border-purple-950/60 hover:border-purple-500 transition-all duration-300 overflow-hidden"
               >
                 <button
-                  onClick={() => toggle(idx)}
-                  className="w-full flex items-center justify-between p-5 text-left text-sm sm:text-base font-bold text-white hover:text-purple-400 transition-colors"
+                  onClick={() => toggleQuestion(idx)}
+                  className="w-full text-left p-5 sm:p-6 flex items-center justify-between gap-4 cursor-pointer"
                 >
-                  <span>{item.q}</span>
-                  <ChevronDown
-                    className={`w-5 h-5 text-zinc-400 shrink-0 transition-transform duration-200 ${
-                      isOpen ? 'rotate-180 text-purple-400' : ''
+                  <span className="text-base sm:text-lg font-bold text-white">
+                    {item.q}
+                  </span>
+                  <div
+                    className={`w-8 h-8 rounded-full bg-[#181326] border border-purple-900/50 flex items-center justify-center text-purple-300 shrink-0 transition-transform duration-300 ${
+                      isOpen ? 'rotate-180 bg-purple-600 text-white' : ''
                     }`}
-                  />
+                  >
+                    <ChevronDown className="w-4 h-4" />
+                  </div>
                 </button>
 
                 {isOpen && (
-                  <div className="px-5 pb-5 pt-1 text-xs sm:text-sm text-zinc-300 leading-relaxed border-t border-purple-900/30">
+                  <div className="px-5 sm:px-6 pb-6 pt-1 text-sm sm:text-base text-zinc-300 font-light leading-relaxed border-t border-purple-950/50">
                     {item.a}
                   </div>
                 )}
               </div>
             );
           })}
-        </div>
 
-        {/* WhatsApp Direct Query Callout */}
-        <div className="mt-10 p-6 bg-black/60 border border-purple-900/50 rounded-2xl flex flex-col sm:flex-row items-center justify-between gap-4 text-center sm:text-left">
-          <div>
-            <div className="text-sm font-bold text-white">Ainda tem alguma dúvida sobre os treinos?</div>
-            <div className="text-xs text-zinc-400">Fale em tempo real com o professor no WhatsApp: <strong className="text-purple-300">{GYM_INFO.whatsapp.formattedNumber}</strong></div>
+          {/* Quick WhatsApp Callout under FAQ */}
+          <div className="text-center pt-8">
+            <p className="text-sm text-zinc-400 font-light mb-4">
+              Ficou com alguma dúvida que não encontrou aqui?
+            </p>
+            <button
+              onClick={() => openWhatsApp(GYM_INFO.whatsapp.defaultMessage)}
+              className="inline-flex items-center gap-2 bg-[#181326] hover:bg-purple-600 text-white border border-purple-900/50 hover:border-purple-400 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md"
+            >
+              <MessageCircle className="w-4 h-4 text-purple-400" />
+              <span>Perguntar Diretamente ao Professor</span>
+            </button>
           </div>
-
-          <button
-            onClick={() => openWhatsApp("Olá Professor! Li as dúvidas frequentes no site e gostaria de fazer uma pergunta sobre a Academia Thanos em Guaranésia.")}
-            className="w-full sm:w-auto flex items-center justify-center gap-2 px-5 py-3 sm:py-2.5 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-md shadow-purple-900/30 active:scale-95 border border-purple-400/30 cursor-pointer"
-          >
-            <MessageCircle className="w-4 h-4 fill-white/20 shrink-0" />
-            <span>Chamar Professor no WhatsApp</span>
-          </button>
         </div>
-
       </div>
     </section>
   );

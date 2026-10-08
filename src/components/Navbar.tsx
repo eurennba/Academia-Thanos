@@ -1,127 +1,161 @@
-import React, { useState } from 'react';
-import { MessageCircle, Menu, X, MapPin } from 'lucide-react';
+import React, { useState, useEffect } from 'react';
+import { Menu, X, MessageCircle } from 'lucide-react';
 import { GYM_INFO } from '../data/gymData';
 import { openWhatsApp } from '../utils/whatsapp';
-import { ThanosLogo } from './ThanosLogo';
 
 interface NavbarProps {
   onOpenTrialModal: () => void;
+  activeSection?: string;
+  onSelectTopic?: (topic: any) => void;
+  activeTopic?: string;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({ onOpenTrialModal }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState('home');
 
   const navLinks = [
-    { label: 'Modalidades', href: '#modalidades' },
-    { label: 'Planos & Valores', href: '#planos' },
-    { label: 'Horários', href: '#horarios' },
-    { label: 'Professores', href: '#professores' },
-    { label: 'Localização', href: '#localizacao' },
-    { label: 'Calculadora IMC', href: '#calculadora' },
+    { name: 'Início', id: 'home' },
+    { name: 'Sobre', id: 'about' },
+    { name: 'Modalidades', id: 'modalidades' },
+    { name: 'Horários', id: 'horarios' },
+    { name: 'Planos', id: 'planos' },
+    { name: 'Professores', id: 'professores' },
+    { name: 'Localização', id: 'localizacao' },
+    { name: 'Contato', id: 'contact' },
   ];
 
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPos = window.scrollY + 140;
+      for (const link of navLinks) {
+        const el = document.getElementById(link.id);
+        if (el) {
+          const { offsetTop, offsetHeight } = el;
+          if (scrollPos >= offsetTop && scrollPos < offsetTop + offsetHeight) {
+            setActiveSection(link.id);
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    handleScroll();
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 bg-[#09090d]/95 backdrop-blur-md border-b border-purple-900/30 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
-        {/* Brand Wordmark & Logo (Compact & Organized) */}
-        <a href="#" className="flex items-center gap-2.5 group shrink-0 mr-4">
-          <div className="w-9 h-9 rounded-full overflow-hidden border border-purple-500/60 shadow-md shadow-purple-600/30 group-hover:border-purple-400 transition-all bg-black flex items-center justify-center p-0.5 shrink-0">
-            <ThanosLogo className="w-full h-full" />
+    <header className="fixed w-full top-0 z-50 bg-black/95 backdrop-blur-md border-b border-purple-900/40 shadow-2xl transition-all">
+      <div className="w-[92%] max-w-[1240px] mx-auto py-3.5 md:py-4 flex justify-between items-center">
+        {/* Brand Logo with exact official image beside title */}
+        <a
+          href="#home"
+          className="flex items-center gap-3 select-none hover:scale-105 transition-transform duration-300 group tracking-tighter"
+        >
+          <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-md">
+            <img
+              src="/images/thanos_gym_logo_1790776940958.jpg"
+              alt="Logo Oficial Academia Thanos"
+              className="w-full h-full object-contain"
+            />
           </div>
-          <div className="flex flex-col">
-            <span className="text-base sm:text-lg font-extrabold tracking-tight font-display text-white group-hover:text-purple-400 transition-colors flex items-center gap-1 leading-tight">
-              ACADEMIA <span className="text-purple-500">THANOS</span>
-            </span>
-            <span className="text-[9px] uppercase tracking-widest text-zinc-400 font-mono -mt-0.5">
-              Guaranésia - MG
-            </span>
+          <div className="text-xl md:text-2xl font-bold flex items-center">
+            <span className="text-white font-thin tracking-widest">ACADEMIA </span>
+            <span className="font-bold text-purple-400 ml-1.5">THANOS</span>
           </div>
         </a>
 
-        {/* All Items Side-by-Side in One Organized, Compact Line */}
-        <nav className="hidden lg:flex items-center gap-3.5 xl:gap-5 text-xs xl:text-[13px] font-medium text-zinc-300">
-          {navLinks.map((link) => (
-            <a
-              key={link.label}
-              href={link.href}
-              className="text-zinc-300 hover:text-purple-400 transition-colors py-1 whitespace-nowrap"
-            >
-              {link.label}
-            </a>
-          ))}
-
-          {/* Aula Experimental Side-by-Side with the other links */}
-          <button
-            onClick={onOpenTrialModal}
-            className="px-3 py-1.5 text-xs font-semibold text-white bg-purple-600/80 hover:bg-purple-600 rounded-md transition-all active:scale-95 border border-purple-500/40 shadow-sm shadow-purple-900/40 whitespace-nowrap cursor-pointer"
-          >
-            Aula Experimental
-          </button>
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:block">
+          <ul className="flex list-none items-center gap-7">
+            {navLinks.map((link) => {
+              const isActive = activeSection === link.id;
+              return (
+                <li key={link.id}>
+                  <a
+                    href={`#${link.id}`}
+                    className={`text-xs uppercase tracking-widest transition-all duration-300 font-light ${
+                      isActive
+                        ? 'text-purple-400 font-semibold border-b-2 border-purple-400 pb-1 opacity-100'
+                        : 'text-zinc-300 hover:text-white opacity-80 hover:opacity-100'
+                    }`}
+                  >
+                    {link.name}
+                  </a>
+                </li>
+              );
+            })}
+          </ul>
         </nav>
 
-        {/* Mobile menu trigger */}
-        <div className="flex items-center gap-2 lg:hidden">
+        {/* Desktop Action Button */}
+        <div className="hidden lg:flex items-center gap-3">
           <button
             onClick={onOpenTrialModal}
-            className="px-2.5 py-1 text-[11px] font-semibold text-white bg-purple-600/90 rounded border border-purple-400/40"
+            className="bg-purple-600 hover:bg-purple-500 text-white px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(168,85,247,0.4)] cursor-pointer border border-purple-400/40"
+          >
+            Aula Grátis
+          </button>
+        </div>
+
+        {/* Mobile Hamburger Controls */}
+        <div className="flex items-center gap-2.5 lg:hidden">
+          <button
+            onClick={onOpenTrialModal}
+            className="bg-purple-600 text-white px-3.5 py-1.5 rounded-full font-bold text-[11px] uppercase tracking-wider cursor-pointer border border-purple-400/30"
           >
             Aula Grátis
           </button>
 
           <button
+            className="text-2xl text-white focus:outline-none hover:text-purple-400 transition-colors duration-300 p-1"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-1.5 text-zinc-400 hover:text-white bg-black/80 rounded-lg border border-purple-900/40 focus:outline-none"
-            aria-label="Abrir menu"
+            aria-label="Toggle menu"
           >
-            {mobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Drawer Menu */}
-      {mobileMenuOpen && (
-        <div className="lg:hidden bg-[#0d0b14] border-b border-purple-900/40 px-5 pt-3 pb-6 animate-fadeIn">
-          <nav className="flex flex-col gap-2.5 mb-5 text-sm">
-            {navLinks.map((link) => (
-              <a
-                key={link.label}
-                href={link.href}
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-zinc-300 hover:text-purple-400 py-1.5 border-b border-purple-950/60"
-              >
-                {link.label}
-              </a>
-            ))}
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                onOpenTrialModal();
-              }}
-              className="text-left text-purple-400 font-semibold py-1.5 border-b border-purple-950/60"
-            >
-              Aula Experimental
-            </button>
-          </nav>
+      {/* Mobile Dropdown Navigation */}
+      <nav
+        className={`absolute top-full left-0 w-full bg-[#0a0712]/98 border-b border-purple-900/50 flex flex-col items-center py-4 shadow-2xl lg:hidden transition-all duration-300 origin-top transform ${
+          mobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 h-0 overflow-hidden pointer-events-none'
+        }`}
+      >
+        <ul className="flex flex-col list-none w-full text-center">
+          {navLinks.map((link) => {
+            const isActive = activeSection === link.id;
+            return (
+              <li key={link.id} className="py-3 border-b border-purple-950/60 last:border-0 w-full">
+                <a
+                  href={`#${link.id}`}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className={`text-sm block tracking-widest uppercase font-light transition-all duration-300 ${
+                    isActive ? 'text-purple-400 font-bold' : 'text-zinc-200 hover:text-white'
+                  }`}
+                >
+                  {link.name}
+                </a>
+              </li>
+            );
+          })}
+        </ul>
 
-          <div className="flex flex-col gap-2.5">
-            <button
-              onClick={() => {
-                setMobileMenuOpen(false);
-                openWhatsApp(GYM_INFO.whatsapp.defaultMessage);
-              }}
-              className="w-full flex items-center justify-center gap-2 py-2.5 px-4 text-xs font-bold text-white bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 rounded-lg transition-colors shadow-md shadow-purple-600/30"
-            >
-              <MessageCircle className="w-4 h-4 fill-white/20" />
-              <span>Falar no WhatsApp: {GYM_INFO.whatsapp.formattedNumber}</span>
-            </button>
-          </div>
-
-          <div className="mt-4 pt-3 border-t border-purple-950/80 text-[11px] text-zinc-400 flex items-center gap-1.5">
-            <MapPin className="w-3.5 h-3.5 text-purple-400 shrink-0" />
-            <span>{GYM_INFO.location.street} Nº {GYM_INFO.location.number} - {GYM_INFO.location.city} - MG</span>
-          </div>
+        {/* Mobile WhatsApp Quick Callout */}
+        <div className="w-[88%] mt-4 pt-3 border-t border-purple-950/60">
+          <button
+            onClick={() => {
+              setMobileMenuOpen(false);
+              openWhatsApp(GYM_INFO.whatsapp.defaultMessage);
+            }}
+            className="w-full flex items-center justify-center gap-2 py-3 px-4 text-xs font-bold text-white bg-purple-600 hover:bg-purple-500 rounded-full transition-colors shadow-lg shadow-purple-950"
+          >
+            <MessageCircle className="w-4 h-4 fill-white/20" />
+            <span>Falar no WhatsApp: {GYM_INFO.whatsapp.formattedNumber}</span>
+          </button>
         </div>
-      )}
+      </nav>
     </header>
   );
 };

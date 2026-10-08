@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
-import { X, CheckCircle2, MessageCircle, Sparkles, User, Phone } from 'lucide-react';
+import { X, CheckCircle2, MessageCircle, User, Phone } from 'lucide-react';
 import { GYM_INFO } from '../data/gymData';
 import { openWhatsApp } from '../utils/whatsapp';
-import { ThanosLogo } from './ThanosLogo';
 
 interface TrialModalProps {
   isOpen: boolean;
@@ -15,7 +14,7 @@ export const TrialModal: React.FC<TrialModalProps> = ({
   isOpen,
   onClose,
   defaultModality = 'Musculação & Hipertrofia',
-  defaultCoach
+  defaultCoach,
 }) => {
   const [name, setName] = useState('');
   const [phone, setPhone] = useState('');
@@ -38,7 +37,7 @@ Gostaria de agendar minha *AULA EXPERIMENTAL GRATUITA*:
 - Modalidade: ${modality}
 - Turno: ${preferredShift}
 - Dia pretendido: ${preferredDate}
-${defaultCoach ? `- Gostaria de treinar com o(a) professor(a): ${defaultCoach}` : ''}
+${defaultCoach ? `- Gostaria de treinar com o professor: ${defaultCoach}` : ''}
 - Local da Academia: ${GYM_INFO.location.street} Nº ${GYM_INFO.location.number}, ${GYM_INFO.location.city} - MG
 
 Podemos confirmar meu acesso? Obrigado!`;
@@ -49,15 +48,15 @@ Podemos confirmar meu acesso? Obrigado!`;
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-sm animate-fadeIn">
-      <div 
-        className="relative w-full max-w-lg bg-[#0f0c18] border border-purple-500/50 rounded-2xl p-6 sm:p-8 shadow-2xl shadow-purple-950/60 text-white max-h-[90vh] overflow-y-auto"
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fadeIn">
+      <div
+        className="relative w-full max-w-lg bg-[#100c1c] border border-purple-900/60 rounded-2xl p-6 sm:p-8 shadow-2xl text-white max-h-[90vh] overflow-y-auto"
         onClick={(e) => e.stopPropagation()}
       >
         {/* Close Button */}
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 p-2 text-zinc-400 hover:text-white rounded-lg bg-black/60 border border-purple-900/50 transition-colors"
+          className="absolute top-4 right-4 p-2 text-zinc-400 hover:text-white rounded-lg bg-[#181326] border border-purple-950 transition-colors cursor-pointer"
           aria-label="Fechar"
         >
           <X className="w-5 h-5" />
@@ -65,24 +64,18 @@ Podemos confirmar meu acesso? Obrigado!`;
 
         {!submitted ? (
           <div>
-            {/* Header with Logo */}
-            <div className="flex items-center gap-3.5 mb-6">
-              <div className="w-12 h-12 rounded-full overflow-hidden border border-purple-500/50 bg-black p-0.5 shrink-0 shadow-lg shadow-purple-900/40">
-                <ThanosLogo className="w-full h-full" />
-              </div>
-              <div>
-                <div className="inline-flex items-center gap-1.5 text-xs font-bold uppercase tracking-wider text-purple-400 mb-1 bg-purple-950/60 px-2.5 py-0.5 rounded border border-purple-800/40">
-                  <Sparkles className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Aula Gratuita · 100% Cortesia</span>
-                </div>
-                <h3 className="text-xl sm:text-2xl font-bold font-display text-white">
-                  Agende sua Aula Experimental
-                </h3>
-              </div>
+            {/* Header */}
+            <div className="mb-6">
+              <span className="text-[11px] font-bold uppercase tracking-widest text-white bg-purple-600 px-3 py-1 rounded-full inline-block mb-3 shadow-md shadow-purple-950">
+                100% Gratuita · Sem Compromisso
+              </span>
+              <h3 className="text-2xl font-bold text-white">
+                Agende sua Aula Experimental
+              </h3>
+              <p className="text-xs sm:text-sm text-zinc-300 font-light mt-1">
+                Conheça a estrutura da Academia Thanos em Guaranésia ({GYM_INFO.location.street} Nº {GYM_INFO.location.number}) e treine acompanhado por um professor.
+              </p>
             </div>
-            <p className="text-xs sm:text-sm text-zinc-300 -mt-3 mb-6">
-              Conheça a estrutura da Academia Thanos em Guaranésia ({GYM_INFO.location.street} N ° {GYM_INFO.location.number}) e treine um dia com acompanhamento de um professor.
-            </p>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -90,31 +83,31 @@ Podemos confirmar meu acesso? Obrigado!`;
                   Seu Nome Completo
                 </label>
                 <div className="relative">
-                  <User className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <User className="w-4 h-4 text-purple-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
                     type="text"
                     required
                     placeholder="Ex: João da Silva"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl pl-9 pr-4 py-3 sm:py-2.5 text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400"
+                    className="w-full bg-[#181326] border border-purple-950 focus:border-purple-400 rounded-xl pl-9 pr-4 py-3 text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
                   />
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">
-                  Seu WhatsApp / Telefone
+                  Seu WhatsApp
                 </label>
                 <div className="relative">
-                  <Phone className="w-4 h-4 text-zinc-400 absolute left-3 top-1/2 -translate-y-1/2" />
+                  <Phone className="w-4 h-4 text-purple-400 absolute left-3 top-1/2 -translate-y-1/2" />
                   <input
                     type="tel"
                     required
                     placeholder="(35) 99999-9999"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl pl-9 pr-4 py-3 sm:py-2.5 text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400"
+                    className="w-full bg-[#181326] border border-purple-950 focus:border-purple-400 rounded-xl pl-9 pr-4 py-3 text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
                   />
                 </div>
               </div>
@@ -127,11 +120,10 @@ Podemos confirmar meu acesso? Obrigado!`;
                   <select
                     value={modality}
                     onChange={(e) => setModality(e.target.value)}
-                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-3 sm:py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-purple-400"
+                    className="w-full bg-[#181326] border border-purple-950 focus:border-purple-400 rounded-xl px-3 py-3 text-base sm:text-xs text-white focus:outline-none transition-colors"
                   >
                     <option value="Musculação & Hipertrofia">Musculação & Hipertrofia</option>
-                    <option value="Treinamento Funcional">Treinamento Funcional</option>
-                    <option value="Personal Trainer">Personal Trainer</option>
+                    <option value="Personal Trainer">Personal Trainer Dedicado</option>
                   </select>
                 </div>
 
@@ -142,7 +134,7 @@ Podemos confirmar meu acesso? Obrigado!`;
                   <select
                     value={preferredShift}
                     onChange={(e) => setPreferredShift(e.target.value)}
-                    className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-3 sm:py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-purple-400"
+                    className="w-full bg-[#181326] border border-purple-950 focus:border-purple-400 rounded-xl px-3 py-3 text-base sm:text-xs text-white focus:outline-none transition-colors"
                   >
                     <option value="Manhã (05:30 às 12:00)">Manhã (05:30 às 12:00)</option>
                     <option value="Tarde (12:00 às 18:00)">Tarde (12:00 às 18:00)</option>
@@ -154,12 +146,12 @@ Podemos confirmar meu acesso? Obrigado!`;
 
               <div>
                 <label className="block text-xs font-semibold text-zinc-300 uppercase tracking-wider mb-1">
-                  Dia de Treino Previsto
+                  Dia Previsto
                 </label>
                 <select
                   value={preferredDate}
                   onChange={(e) => setPreferredDate(e.target.value)}
-                  className="w-full bg-black/60 border border-purple-900/60 rounded-xl px-3 py-3 sm:py-2.5 text-base sm:text-xs text-white focus:outline-none focus:border-purple-400"
+                  className="w-full bg-[#181326] border border-purple-950 focus:border-purple-400 rounded-xl px-3 py-3 text-base sm:text-xs text-white focus:outline-none transition-colors"
                 >
                   <option value="Hoje">Hoje</option>
                   <option value="Amanhã">Amanhã</option>
@@ -172,36 +164,36 @@ Podemos confirmar meu acesso? Obrigado!`;
               <div className="pt-2">
                 <button
                   type="submit"
-                  className="w-full flex items-center justify-center gap-2 py-3.5 px-4 text-sm font-extrabold text-white bg-gradient-to-r from-purple-600 via-purple-700 to-purple-800 hover:from-purple-500 hover:to-purple-600 rounded-xl transition-all shadow-lg shadow-purple-900/50 active:scale-95 border border-purple-400/40"
+                  className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs uppercase tracking-wider py-4 px-4 rounded-xl transition-all shadow-lg shadow-purple-950 flex items-center justify-center gap-2 cursor-pointer border border-purple-400/40"
                 >
-                  <MessageCircle className="w-5 h-5 fill-white/20" />
-                  <span>Confirmar & Abrir no WhatsApp: (35) 99135-9857</span>
+                  <MessageCircle className="w-4 h-4" />
+                  <span>Confirmar & Abrir no WhatsApp</span>
                 </button>
-                <div className="text-[11px] text-center text-zinc-400 mt-2">
-                  Aula 100% gratuita na Rua Francisco Monteiro Dias N ° 380, Guaranésia.
+                <div className="text-[11px] text-center text-zinc-400 font-light mt-2">
+                  Atendimento direto pelo número {GYM_INFO.whatsapp.formattedNumber}
                 </div>
               </div>
             </form>
           </div>
         ) : (
           <div className="py-8 text-center space-y-4">
-            <div className="w-16 h-16 rounded-full bg-purple-950/80 border border-purple-400 text-purple-300 flex items-center justify-center mx-auto shadow-lg shadow-purple-950">
+            <div className="w-16 h-16 rounded-full bg-purple-600/20 border-2 border-purple-500 text-purple-300 flex items-center justify-center mx-auto shadow-lg shadow-purple-950">
               <CheckCircle2 className="w-8 h-8" />
             </div>
 
-            <h3 className="text-2xl font-bold font-display text-white">
+            <h3 className="text-2xl font-bold text-white">
               Vaga Pré-Agendada!
             </h3>
 
-            <p className="text-sm text-zinc-300 max-w-sm mx-auto">
-              Sua solicitação foi enviada para o professor. A conversa no WhatsApp foi iniciada para confirmar seu acesso livre à academia em Guaranésia.
+            <p className="text-sm text-zinc-300 font-light max-w-sm mx-auto">
+              Sua solicitação foi enviada para o professor da Academia Thanos. A conversa no WhatsApp foi iniciada para confirmar seu acesso.
             </p>
 
-            <div className="p-4 bg-black/60 rounded-xl border border-purple-900/50 text-left text-xs space-y-1.5 max-w-xs mx-auto font-mono text-zinc-300">
+            <div className="p-4 bg-[#181326] rounded-xl border border-purple-950 text-left text-xs space-y-1.5 max-w-xs mx-auto text-zinc-300">
               <div>Aluno: <strong className="text-white">{name}</strong></div>
-              <div>Modalidade: <span className="text-purple-300">{modality}</span></div>
+              <div>Modalidade: <span className="text-purple-300 font-semibold">{modality}</span></div>
               <div>Turno: <span>{preferredShift}</span></div>
-              <div className="text-[11px] text-zinc-400 pt-1 border-t border-purple-900/40">
+              <div className="text-[11px] text-zinc-400 pt-1 border-t border-purple-950">
                 Local: {GYM_INFO.location.street} Nº {GYM_INFO.location.number}, {GYM_INFO.location.city} - MG
               </div>
             </div>
@@ -211,15 +203,15 @@ Podemos confirmar meu acesso? Obrigado!`;
                 onClick={() => {
                   handleSubmit({ preventDefault: () => {} } as any);
                 }}
-                className="w-full py-3 px-4 text-xs font-bold text-white bg-purple-600 hover:bg-purple-500 rounded-xl transition-colors flex items-center justify-center gap-2"
+                className="w-full py-3 px-4 text-xs font-bold text-white bg-purple-600 hover:bg-purple-500 rounded-xl transition-colors flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-purple-950"
               >
-                <MessageCircle className="w-4 h-4 fill-white/20" />
-                <span>Reenviar WhatsApp do Professor</span>
+                <MessageCircle className="w-4 h-4" />
+                <span>Reabrir WhatsApp do Professor</span>
               </button>
 
               <button
                 onClick={onClose}
-                className="w-full py-2 px-4 text-xs text-zinc-400 hover:text-white"
+                className="w-full py-2 px-4 text-xs text-zinc-400 hover:text-white cursor-pointer"
               >
                 Fechar janela
               </button>

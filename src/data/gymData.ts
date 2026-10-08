@@ -60,7 +60,7 @@ export interface Testimonial {
 export const GYM_INFO = {
   name: "Academia Thanos",
   tagline: "Força, Disciplina & Alta Performance",
-  description: "A academia de alta performance mais completa de Guaranésia - MG. Equipamentos biomecânicos de primeira linha, musculação pesada, treinamento funcional e acompanhamento profissional para o seu melhor resultado.",
+  description: "A academia de alta performance mais completa de Guaranésia - MG. Equipamentos biomecânicos de primeira linha, musculação pesada e acompanhamento profissional para o seu melhor resultado.",
   
   // Exact user specified location
   location: {
@@ -95,8 +95,8 @@ export const GYM_INFO = {
     weekdays: "05:30 às 22:00",
     saturday: "05:00 às 12:00",
     sunday: "Fechado",
-    holidays: "08:00 às 12:00",
-    sundayAndHolidays: "Domingos: Fechado | Feriados: 08:00 às 12:00",
+    holidays: "09:00 às 12:00",
+    sundayAndHolidays: "Domingos: Fechado | Feriados: 09:00 às 12:00",
   }
 };
 
@@ -121,17 +121,17 @@ export const COACHES: Coach[] = [
     nickname: "Prof. Presley",
     role: "Professor Responsável & Treinamento Físico",
     cref: "CREF / MG",
-    specialties: ["Treinamento Funcional", "Musculação Orientada", "Condicionamento Físico"],
+    specialties: ["Musculação Orientada", "Periodização de Carga", "Condicionamento Físico"],
     phone: "5535997757577",
     formattedPhone: "(35) 99775-7577",
     whatsappMessage: "Olá Professor Presley! Estive no site da Academia Thanos e gostaria de saber mais sobre os treinos e acompanhamento em Guaranésia.",
-    bio: "Professor responsável pela Academia Thanos em Guaranésia. Foco em metodologia dinâmica, queima calórica, fortalecimento muscular e evolução constante de cada aluno.",
+    bio: "Professor responsável pela Academia Thanos em Guaranésia. Foco em metodologia dinâmica, fortalecimento muscular, correção biomecânica e evolução constante de cada aluno.",
     experienceYears: 8,
     image: "/images/coach_presley_photo_1790856196691.jpg"
   }
 ];
 
-// Lutas e artes marciais removidas do catálogo
+// Catálogo de modalidades oficiais da Thanos
 export const MODALITIES: Modality[] = [
   {
     id: "musculacao",
@@ -143,17 +143,6 @@ export const MODALITIES: Modality[] = [
     intensity: "Muito Alta",
     coachName: "Prof. Vinicius & Prof. Presley",
     scheduleSummary: "Seg a Sex: 05:30 às 22:00 | Sáb: 05:00 às 12:00"
-  },
-  {
-    id: "funcional",
-    title: "Treinamento Funcional Thanos",
-    category: "Condicionamento & Queima",
-    description: "Circuitos intensos para queima calórica, aumento de resistência cardiovascular e fortalecimento do abdômen e pernas. Treinos dinâmicos e envolventes sob orientação direta.",
-    features: ["Kettlebells, cordas navais e trenó", "Turmas com acompanhamento próximo", "Melhora de agilidade e mobilidade", "Acessível para iniciantes e avançados"],
-    image: "/images/modalities_combat_cross_1790776961214.jpg",
-    intensity: "Alta",
-    coachName: "Prof. Presley & Prof. Vinicius",
-    scheduleSummary: "Turmas manhã, tarde e noite"
   },
   {
     id: "personal",
@@ -170,44 +159,44 @@ export const MODALITIES: Modality[] = [
 
 export const SCHEDULE_BY_DAY: Record<string, ClassScheduleItem[]> = {
   "Segunda": [
-    { id: "s1", time: "06:00 - 07:00", modality: "Funcional Wake-Up", coach: "Presley", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" },
-    { id: "s2", time: "07:30 - 08:30", modality: "Circuito Cardio & Agilidade", coach: "Presley", room: "Arena Funcional", level: "Iniciante / Geral", duration: "60m" },
+    { id: "s1", time: "06:00 - 07:00", modality: "Musculação Matinal Monitorada", coach: "Presley", room: "Sala Musculação", level: "Todos os níveis", duration: "60m" },
+    { id: "s2", time: "07:30 - 08:30", modality: "Circuito Cardio & Resistência", coach: "Presley", room: "Sala Musculação", level: "Iniciante / Geral", duration: "60m" },
     { id: "s3", time: "09:00 - 10:00", modality: "Musculação Monitorada (Glúteos & Pernas)", coach: "Vinicius", room: "Sala Musculação", level: "Geral", duration: "60m" },
-    { id: "s4", time: "17:00 - 18:00", modality: "Cross & Funcional Tarde", coach: "Presley", room: "Arena Funcional", level: "Intermediário", duration: "60m" },
+    { id: "s4", time: "17:00 - 18:00", modality: "Treino de Força & Hipertrofia", coach: "Presley", room: "Sala Musculação", level: "Intermediário", duration: "60m" },
     { id: "s5", time: "18:30 - 19:30", modality: "Musculação Hipertrofia (Membros Superiores)", coach: "Vinicius", room: "Sala Musculação", level: "Avançado", duration: "60m" },
-    { id: "s6", time: "19:30 - 20:30", modality: "Treino Funcional de Alta Intensidade", coach: "Presley", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" }
+    { id: "s6", time: "19:30 - 20:30", modality: "Treino Assistido Noturno", coach: "Presley", room: "Sala Musculação", level: "Todos os níveis", duration: "60m" }
   ],
   "Terça": [
-    { id: "t1", time: "06:30 - 07:30", modality: "Circuito Queima Intensa", coach: "Presley", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" },
+    { id: "t1", time: "06:30 - 07:30", modality: "Circuito de Força & Cardio", coach: "Presley", room: "Sala Musculação", level: "Todos os níveis", duration: "60m" },
     { id: "t2", time: "08:00 - 09:00", modality: "Musculação Periodizada (Costas & Bíceps)", coach: "Vinicius", room: "Sala Musculação", level: "Geral", duration: "60m" },
-    { id: "t3", time: "18:00 - 19:00", modality: "Alongamento & Mobilidade Articular", coach: "Presley", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" },
+    { id: "t3", time: "18:00 - 19:00", modality: "Alongamento & Mobilidade Articular", coach: "Presley", room: "Sala Musculação", level: "Todos os níveis", duration: "60m" },
     { id: "t4", time: "19:15 - 20:15", modality: "Musculação Assistida Noite", coach: "Vinicius", room: "Sala Musculação", level: "Geral", duration: "60m" }
   ],
   "Quarta": [
-    { id: "q1", time: "06:00 - 07:00", modality: "Funcional Wake-Up", coach: "Presley", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" },
-    { id: "q2", time: "07:30 - 08:30", modality: "Circuito Cardio & Queima", coach: "Presley", room: "Arena Funcional", level: "Geral", duration: "60m" },
+    { id: "q1", time: "06:00 - 07:00", modality: "Musculação Matinal Monitorada", coach: "Presley", room: "Sala Musculação", level: "Todos os níveis", duration: "60m" },
+    { id: "q2", time: "07:30 - 08:30", modality: "Circuito Cardio & Resistência", coach: "Presley", room: "Sala Musculação", level: "Geral", duration: "60m" },
     { id: "q3", time: "17:30 - 18:30", modality: "Musculação Monitorada (Peito & Tríceps)", coach: "Vinicius", room: "Sala Musculação", level: "Geral", duration: "60m" },
-    { id: "q4", time: "19:30 - 20:30", modality: "Funcional Core & Fortalecimento", coach: "Presley", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" }
+    { id: "q4", time: "19:30 - 20:30", modality: "Treino de Core & Fortalecimento", coach: "Presley", room: "Sala Musculação", level: "Todos os níveis", duration: "60m" }
   ],
   "Quinta": [
-    { id: "qu1", time: "06:30 - 07:30", modality: "Circuito Queima Intensa", coach: "Presley", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" },
+    { id: "qu1", time: "06:30 - 07:30", modality: "Circuito de Queima & Força", coach: "Presley", room: "Sala Musculação", level: "Todos os níveis", duration: "60m" },
     { id: "qu2", time: "08:30 - 09:30", modality: "Musculação Periodizada (Pernas)", coach: "Vinicius", room: "Sala Musculação", level: "Geral", duration: "60m" },
     { id: "qu3", time: "18:00 - 19:00", modality: "Treino de Força & Abdômen", coach: "Vinicius", room: "Sala Musculação", level: "Intermediário", duration: "60m" },
-    { id: "qu4", time: "19:15 - 20:15", modality: "Funcional Extreme", coach: "Presley", room: "Arena Funcional", level: "Alta", duration: "60m" }
+    { id: "qu4", time: "19:15 - 20:15", modality: "Hipertrofia & Força Noite", coach: "Presley", room: "Sala Musculação", level: "Alta", duration: "60m" }
   ],
   "Sexta": [
-    { id: "se1", time: "06:00 - 07:00", modality: "Funcional Friday Burn", coach: "Presley", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" },
+    { id: "se1", time: "06:00 - 07:00", modality: "Treino de Força & Resistência", coach: "Presley", room: "Sala Musculação", level: "Todos os níveis", duration: "60m" },
     { id: "se2", time: "08:00 - 09:00", modality: "Musculação Monitorada Full Body", coach: "Vinicius", room: "Sala Musculação", level: "Geral", duration: "60m" },
-    { id: "se3", time: "18:00 - 19:00", modality: "Super Circuito Final de Semana", coach: "Presley & Vinicius", room: "Arena Funcional", level: "Todos os níveis", duration: "60m" }
+    { id: "se3", time: "18:00 - 19:00", modality: "Super Circuito Final de Semana", coach: "Presley & Vinicius", room: "Sala Musculação", level: "Todos os níveis", duration: "60m" }
   ],
   "Sábado": [
     { id: "sa1", time: "05:00 - 08:00", modality: "Musculação Matinal & Orientação Técnica", coach: "Prof. Vinicius & Prof. Presley", room: "Sala Musculação", level: "Geral", duration: "Livre" },
-    { id: "sa2", time: "08:00 - 09:15", modality: "Super Aulão Funcional Thanos", coach: "Professores Vinicius & Presley", room: "Arena Funcional", level: "Aberto a todos", duration: "75m" },
+    { id: "sa2", time: "08:00 - 09:15", modality: "Super Aulão de Musculação & Força", coach: "Professores Vinicius & Presley", room: "Sala Musculação", level: "Aberto a todos", duration: "75m" },
     { id: "sa3", time: "09:30 - 12:00", modality: "Musculação Livre com Monitor", coach: "Prof. Vinicius & Prof. Presley", room: "Sala Musculação", level: "Geral", duration: "Livre" }
   ],
   "Domingo": [],
   "Feriados": [
-    { id: "fe1", time: "08:00 - 12:00", modality: "Treino Especial de Feriado & Musculação Livre", coach: "Professores Vinicius & Presley", room: "Sala Musculação & Funcional", level: "Geral", duration: "08:00 às 12:00" }
+    { id: "fe1", time: "09:00 - 12:00", modality: "Treino Especial de Feriado & Musculação Livre", coach: "Professores Vinicius & Presley", room: "Sala Musculação", level: "Geral", duration: "09:00 às 12:00" }
   ]
 };
 
@@ -237,8 +226,8 @@ export const PRICING_PLANS: PricingPlan[] = [
     priceMonthly: 90.00,
     highlight: "Mais Escolhido",
     benefits: [
-      "Musculação Livre + Acesso às Aulas Coletivas",
-      "Acesso livre a todo o Treinamento Funcional",
+      "Acesso completo à área de musculação",
+      "Ficha de treino avançada com periodização de cargas",
       "Avaliação física completa com bioimpedância periódica",
       "1 Convite mensal para trazer um amigo para treinar",
       "Camiseta oficial exclusiva Academia Thanos Guaranésia",

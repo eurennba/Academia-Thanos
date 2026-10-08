@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
-import { LocationBanner } from './components/LocationBanner';
+import { AboutSection } from './components/AboutSection';
 import { Modalities } from './components/Modalities';
-import { Coaches } from './components/Coaches';
 import { Schedule } from './components/Schedule';
-import { BmiCalculator } from './components/BmiCalculator';
 import { PricingPlans } from './components/PricingPlans';
-import { Testimonials } from './components/Testimonials';
+import { Coaches } from './components/Coaches';
 import { LocationSection } from './components/LocationSection';
+import { BmiCalculator } from './components/BmiCalculator';
 import { FaqSection } from './components/FaqSection';
+import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
 import { TrialModal } from './components/TrialModal';
 
@@ -39,43 +39,44 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#09090d] text-zinc-100 flex flex-col font-sans selection:bg-purple-600 selection:text-white overflow-x-hidden w-full max-w-full">
-      {/* Top Bar Navigation */}
+    <div className="min-h-screen bg-black text-white flex flex-col font-light antialiased selection:bg-purple-600 selection:text-white overflow-x-hidden w-full max-w-full">
+      {/* Fixed Header in BinhoBeatz layout */}
       <Navbar onOpenTrialModal={() => handleOpenTrialModal()} />
 
-      <main className="flex-1 w-full max-w-full overflow-x-hidden">
-        {/* Hero Section in Thanos Purple & Black with direct WhatsApp action */}
+      {/* Main Single-Page Sections in BinhoBeatz layout */}
+      <main className="flex-grow w-full max-w-full overflow-x-hidden">
+        {/* Hero Section */}
         <Hero onOpenTrialModal={() => handleOpenTrialModal()} />
 
-        {/* Location Banner: Rua Francisco Monteiro Dias N° 380, Guaranésia - MG & WhatsApp (35) 99135-9857 */}
-        <LocationBanner />
+        {/* Sobre a Thanos */}
+        <AboutSection />
 
-        {/* Modalities & Equipment in Guaranésia */}
+        {/* Modalidades */}
         <Modalities onOpenTrialModal={(mod) => handleOpenTrialModal(mod)} />
 
-        {/* Coaches Section with Direct WhatsApp per teacher */}
-        <Coaches onOpenTrialModal={(coach) => handleOpenTrialModal(coach)} />
-
-        {/* Dynamic Class Timetable */}
+        {/* Horários & Feriados (Feriado das 09 às 12) */}
         <Schedule />
 
-        {/* Interactive BMI & Training Prescription Calculator */}
-        <BmiCalculator />
-
-        {/* Transparent Membership Plans: Plano Mensal 80,00 and Plano Thanos VIP 90,00 */}
+        {/* Planos & Valores (Mensal R$ 80 | VIP R$ 90 - Sem Trimestral) */}
         <PricingPlans />
 
-        {/* Testimonials */}
-        <Testimonials />
+        {/* Professores Responsáveis */}
+        <Coaches onOpenTrialModal={(coach) => handleOpenTrialModal(coach)} />
 
-        {/* Detailed Location Section */}
+        {/* Onde Estamos - Rua Francisco Monteiro Dias Nº 380 */}
         <LocationSection />
 
-        {/* FAQ Section */}
+        {/* Calculadora IMC */}
+        <BmiCalculator />
+
+        {/* Dúvidas Frequentes */}
         <FaqSection />
+
+        {/* Entre em Contato (BinhoBeatz Form + Direct WhatsApp/Maps) */}
+        <ContactSection />
       </main>
 
-      {/* Footer */}
+      {/* Footer in BinhoBeatz style */}
       <Footer />
 
       {/* Free Trial Class Modal */}
