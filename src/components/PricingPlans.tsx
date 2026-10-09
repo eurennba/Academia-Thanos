@@ -1,15 +1,9 @@
 import React from 'react';
-import { Check, MessageCircle } from 'lucide-react';
-import { PRICING_PLANS, PricingPlan } from '../data/gymData';
-import { openWhatsApp } from '../utils/whatsapp';
+import { Check, ArrowRight } from 'lucide-react';
+import { PRICING_PLANS } from '../data/gymData';
 import { SectionHeader } from './SectionHeader';
 
 export const PricingPlans: React.FC = () => {
-  const handleSelectPlan = (plan: PricingPlan) => {
-    const message = `Olá Professor! Gostaria de me matricular na Academia Thanos no *${plan.name}* (R$ ${plan.priceMonthly.toFixed(2).replace('.', ',')}/mês). Como faço para começar?`;
-    openWhatsApp(message);
-  };
-
   return (
     <section id="planos" className="py-24 bg-[#08050e] border-b border-purple-950/40">
       <div className="w-[90%] max-w-[1200px] mx-auto px-5">
@@ -81,21 +75,21 @@ export const PricingPlans: React.FC = () => {
                   </ul>
                 </div>
 
-                {/* Primary CTA */}
+                {/* Primary CTA - Sem Matrícula no WhatsApp */}
                 <div>
-                  <button
-                    onClick={() => handleSelectPlan(plan)}
+                  <a
+                    href="#contact"
                     className={`w-full py-4 px-6 rounded-xl font-bold text-xs uppercase tracking-wider transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg ${
                       isVip
                         ? 'bg-purple-600 text-white hover:bg-purple-500 hover:shadow-[0_0_20px_rgba(168,85,247,0.5)] border border-purple-400/40'
                         : 'bg-[#181326] text-white hover:bg-purple-600 border border-purple-900/50 hover:border-purple-400'
                     }`}
                   >
-                    <MessageCircle className="w-4 h-4" />
-                    <span>Começar no {plan.name}</span>
-                  </button>
+                    <span>Fazer Inscrição Presencial</span>
+                    <ArrowRight className="w-4 h-4" />
+                  </a>
                   <p className="text-[11px] text-center text-zinc-400 font-light mt-3">
-                    Ativação direta e rápida pelo WhatsApp da academia
+                    Matrícula realizada diretamente na recepção na Rua Francisco Monteiro Dias Nº 380
                   </p>
                 </div>
               </div>

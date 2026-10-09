@@ -11,80 +11,66 @@ import { BmiCalculator } from './components/BmiCalculator';
 import { FaqSection } from './components/FaqSection';
 import { ContactSection } from './components/ContactSection';
 import { Footer } from './components/Footer';
-import { TrialModal } from './components/TrialModal';
+import { MobileLateralMenu } from './components/MobileLateralMenu';
+import { Menu } from 'lucide-react';
 
 export default function App() {
-  const [trialModalOpen, setTrialModalOpen] = useState(false);
-  const [selectedModality, setSelectedModality] = useState<string | undefined>(undefined);
-  const [selectedCoach, setSelectedCoach] = useState<string | undefined>(undefined);
-
-  const handleOpenTrialModal = (modalityOrCoach?: string) => {
-    if (modalityOrCoach) {
-      if (
-        modalityOrCoach.includes('Prof') ||
-        modalityOrCoach.includes('Vinicius') ||
-        modalityOrCoach.includes('Presley')
-      ) {
-        setSelectedCoach(modalityOrCoach);
-        setSelectedModality(undefined);
-      } else {
-        setSelectedModality(modalityOrCoach);
-        setSelectedCoach(undefined);
-      }
-    } else {
-      setSelectedModality(undefined);
-      setSelectedCoach(undefined);
-    }
-    setTrialModalOpen(true);
-  };
+  const [lateralMenuOpen, setLateralMenuOpen] = useState(false);
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col font-light antialiased selection:bg-purple-600 selection:text-white overflow-x-hidden w-full max-w-full">
-      {/* Fixed Header in BinhoBeatz layout */}
-      <Navbar onOpenTrialModal={() => handleOpenTrialModal()} />
+    <div className="min-h-screen bg-[#07050a] text-white flex flex-col font-light antialiased selection:bg-purple-600 selection:text-white overflow-x-hidden w-full max-w-full">
+      {/* Fixed Header in Purple & White (Sem Logo, Sem WhatsApp e Sem Nome Tópicos) */}
+      <Navbar />
 
-      {/* Main Single-Page Sections in BinhoBeatz layout */}
+      {/* Main Single-Page Sections enquadradas para todo tipo de celular */}
       <main className="flex-grow w-full max-w-full overflow-x-hidden">
-        {/* Hero Section */}
-        <Hero onOpenTrialModal={() => handleOpenTrialModal()} />
+        {/* Hero Section Centralizada */}
+        <Hero />
 
         {/* Sobre a Thanos */}
         <AboutSection />
 
-        {/* Modalidades */}
-        <Modalities onOpenTrialModal={(mod) => handleOpenTrialModal(mod)} />
+        {/* Modalidades de Alta Performance */}
+        <Modalities />
 
-        {/* Horários & Feriados (Feriado das 09 às 12) */}
+        {/* Horários Oficiais & Feriados (Feriado das 09 às 12) */}
         <Schedule />
 
         {/* Planos & Valores (Mensal R$ 80 | VIP R$ 90 - Sem Trimestral) */}
         <PricingPlans />
 
-        {/* Professores Responsáveis */}
-        <Coaches onOpenTrialModal={(coach) => handleOpenTrialModal(coach)} />
+        {/* Professores Responsáveis no Salão com Botão de Chamada Telefônica */}
+        <Coaches />
 
-        {/* Onde Estamos - Rua Francisco Monteiro Dias Nº 380 */}
+        {/* Onde Estamos - Rua Francisco Monteiro Dias Nº 380 em Guaranésia */}
         <LocationSection />
 
-        {/* Calculadora IMC */}
+        {/* Calculadora IMC Interativa para os Alunos */}
         <BmiCalculator />
 
         {/* Dúvidas Frequentes */}
         <FaqSection />
 
-        {/* Entre em Contato (BinhoBeatz Form + Direct WhatsApp/Maps) */}
+        {/* Entre em Contato & Informações */}
         <ContactSection />
       </main>
 
-      {/* Footer in BinhoBeatz style */}
+      {/* Footer Sem Logo e Sem WhatsApp */}
       <Footer />
 
-      {/* Free Trial Class Modal */}
-      <TrialModal
-        isOpen={trialModalOpen}
-        onClose={() => setTrialModalOpen(false)}
-        defaultModality={selectedModality}
-        defaultCoach={selectedCoach}
+      {/* Botão Flutuante de Menu Lateral para Celular (Sem Nome Tópicos) */}
+      <button
+        onClick={() => setLateralMenuOpen(true)}
+        className="fixed bottom-5 right-4 sm:right-6 z-40 lg:hidden w-12 h-12 flex items-center justify-center bg-[#140b24]/95 hover:bg-purple-900 text-white rounded-full border border-purple-500/50 shadow-xl shadow-purple-950/80 backdrop-blur-md active:scale-95 transition-all cursor-pointer"
+        aria-label="Abrir Menu"
+      >
+        <Menu className="w-5 h-5 text-purple-400" />
+      </button>
+
+      {/* Menu Lateral para Celular */}
+      <MobileLateralMenu
+        isOpen={lateralMenuOpen}
+        onClose={() => setLateralMenuOpen(false)}
       />
     </div>
   );

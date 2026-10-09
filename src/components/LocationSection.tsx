@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { MapPin, Navigation, Copy, Check, MessageCircle, Clock, ExternalLink } from 'lucide-react';
+import { MapPin, Navigation, Copy, Check, Clock, ExternalLink } from 'lucide-react';
 import { GYM_INFO } from '../data/gymData';
-import { openWhatsApp } from '../utils/whatsapp';
 import { SectionHeader } from './SectionHeader';
 
 export const LocationSection: React.FC = () => {
@@ -67,7 +66,7 @@ export const LocationSection: React.FC = () => {
               </div>
             </div>
 
-            {/* Quick Actions */}
+            {/* Quick Actions (Sem WhatsApp) */}
             <div className="space-y-2.5 pt-6 mt-6 border-t border-purple-950/60">
               <button
                 onClick={handleCopy}
@@ -99,13 +98,15 @@ export const LocationSection: React.FC = () => {
                 </a>
               </div>
 
-              <button
-                onClick={() => openWhatsApp(GYM_INFO.whatsapp.defaultMessage)}
+              <a
+                href={GYM_INFO.location.googleMapsUrl}
+                target="_blank"
+                rel="noopener noreferrer"
                 className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs uppercase tracking-wider py-3 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-purple-950 border border-purple-400/40"
               >
-                <MessageCircle className="w-4 h-4" />
-                <span>Como Chegar via WhatsApp</span>
-              </button>
+                <MapPin className="w-4 h-4" />
+                <span>Traçar Rota no Google Maps</span>
+              </a>
             </div>
           </div>
 

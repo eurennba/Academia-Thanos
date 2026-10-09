@@ -1,17 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageCircle } from 'lucide-react';
-import { GYM_INFO } from '../data/gymData';
-import { openWhatsApp } from '../utils/whatsapp';
+import { Menu } from 'lucide-react';
+import { MobileLateralMenu } from './MobileLateralMenu';
 
-interface NavbarProps {
-  onOpenTrialModal: () => void;
-  activeSection?: string;
-  onSelectTopic?: (topic: any) => void;
-  activeTopic?: string;
-}
-
-export const Navbar: React.FC<NavbarProps> = ({ onOpenTrialModal }) => {
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+export const Navbar: React.FC = () => {
+  const [lateralMenuOpen, setLateralMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState('home');
 
   const navLinks = [
@@ -45,117 +37,63 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenTrialModal }) => {
   }, []);
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-black/95 backdrop-blur-md border-b border-purple-900/40 shadow-2xl transition-all">
-      <div className="w-[92%] max-w-[1240px] mx-auto py-3.5 md:py-4 flex justify-between items-center">
-        {/* Brand Logo with exact official image beside title */}
-        <a
-          href="#home"
-          className="flex items-center gap-3 select-none hover:scale-105 transition-transform duration-300 group tracking-tighter"
-        >
-          <div className="w-10 h-10 rounded-full overflow-hidden shrink-0 shadow-md">
-            <img
-              src="/images/thanos_gym_logo_1790776940958.jpg"
-              alt="Logo Oficial Academia Thanos"
-              className="w-full h-full object-contain"
-            />
+    <>
+      <header className="fixed w-full top-0 z-40 bg-[#07050d]/95 backdrop-blur-md border-b border-purple-900/50 shadow-2xl transition-all">
+        <div className="w-[96%] max-w-[1240px] mx-auto py-2.5 sm:py-3 md:py-3.5 flex justify-between items-center">
+          {/* Título da Aba Principal com Letras de Espaço Curto (tracking-tight) para Celular e Outros Aparelhos */}
+          <a
+            href="#home"
+            className="flex items-center select-none hover:opacity-90 transition-opacity"
+            aria-label="Academia Thanos Início"
+          >
+            <div className="text-lg sm:text-xl md:text-2xl font-black flex items-center tracking-tight leading-none">
+              <span className="text-white tracking-tight">ACADEMIA</span>
+              <span className="text-purple-400 tracking-tight ml-1">THANOS</span>
+            </div>
+          </a>
+
+          {/* Links da Aba Principal no Desktop - Letras com Espaço Curto (tracking-tight) */}
+          <nav className="hidden lg:block">
+            <ul className="flex list-none items-center gap-4 xl:gap-6">
+              {navLinks.map((link) => {
+                const isActive = activeSection === link.id;
+                return (
+                  <li key={link.id}>
+                    <a
+                      href={`#${link.id}`}
+                      className={`text-xs uppercase tracking-tight transition-all duration-200 font-semibold ${
+                        isActive
+                          ? 'text-purple-400 border-b-2 border-purple-400 pb-0.5 opacity-100'
+                          : 'text-zinc-300 hover:text-white opacity-90 hover:opacity-100'
+                      }`}
+                    >
+                      {link.name}
+                    </a>
+                  </li>
+                );
+              })}
+            </ul>
+          </nav>
+
+          {/* Botão de Menu para Celular e Outros Aparelhos - SEM O NOME TÓPICOS */}
+          <div className="flex items-center">
+            <button
+              onClick={() => setLateralMenuOpen(true)}
+              className="p-2 sm:p-2.5 bg-[#171026] hover:bg-purple-900/60 text-white rounded-xl border border-purple-800/60 focus:outline-none transition-colors duration-200 cursor-pointer shadow-md active:scale-95"
+              aria-label="Menu"
+            >
+              <Menu className="w-5 h-5 text-purple-400" />
+            </button>
           </div>
-          <div className="text-xl md:text-2xl font-bold flex items-center">
-            <span className="text-white font-thin tracking-widest">ACADEMIA </span>
-            <span className="font-bold text-purple-400 ml-1.5">THANOS</span>
-          </div>
-        </a>
-
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:block">
-          <ul className="flex list-none items-center gap-7">
-            {navLinks.map((link) => {
-              const isActive = activeSection === link.id;
-              return (
-                <li key={link.id}>
-                  <a
-                    href={`#${link.id}`}
-                    className={`text-xs uppercase tracking-widest transition-all duration-300 font-light ${
-                      isActive
-                        ? 'text-purple-400 font-semibold border-b-2 border-purple-400 pb-1 opacity-100'
-                        : 'text-zinc-300 hover:text-white opacity-80 hover:opacity-100'
-                    }`}
-                  >
-                    {link.name}
-                  </a>
-                </li>
-              );
-            })}
-          </ul>
-        </nav>
-
-        {/* Desktop Action Button */}
-        <div className="hidden lg:flex items-center gap-3">
-          <button
-            onClick={onOpenTrialModal}
-            className="bg-purple-600 hover:bg-purple-500 text-white px-5 py-2.5 rounded-full font-bold text-xs uppercase tracking-wider transition-all duration-300 hover:scale-105 shadow-[0_0_15px_rgba(168,85,247,0.4)] cursor-pointer border border-purple-400/40"
-          >
-            Aula Grátis
-          </button>
         </div>
+      </header>
 
-        {/* Mobile Hamburger Controls */}
-        <div className="flex items-center gap-2.5 lg:hidden">
-          <button
-            onClick={onOpenTrialModal}
-            className="bg-purple-600 text-white px-3.5 py-1.5 rounded-full font-bold text-[11px] uppercase tracking-wider cursor-pointer border border-purple-400/30"
-          >
-            Aula Grátis
-          </button>
-
-          <button
-            className="text-2xl text-white focus:outline-none hover:text-purple-400 transition-colors duration-300 p-1"
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            aria-label="Toggle menu"
-          >
-            {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Dropdown Navigation */}
-      <nav
-        className={`absolute top-full left-0 w-full bg-[#0a0712]/98 border-b border-purple-900/50 flex flex-col items-center py-4 shadow-2xl lg:hidden transition-all duration-300 origin-top transform ${
-          mobileMenuOpen ? 'opacity-100 scale-y-100' : 'opacity-0 scale-y-0 h-0 overflow-hidden pointer-events-none'
-        }`}
-      >
-        <ul className="flex flex-col list-none w-full text-center">
-          {navLinks.map((link) => {
-            const isActive = activeSection === link.id;
-            return (
-              <li key={link.id} className="py-3 border-b border-purple-950/60 last:border-0 w-full">
-                <a
-                  href={`#${link.id}`}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className={`text-sm block tracking-widest uppercase font-light transition-all duration-300 ${
-                    isActive ? 'text-purple-400 font-bold' : 'text-zinc-200 hover:text-white'
-                  }`}
-                >
-                  {link.name}
-                </a>
-              </li>
-            );
-          })}
-        </ul>
-
-        {/* Mobile WhatsApp Quick Callout */}
-        <div className="w-[88%] mt-4 pt-3 border-t border-purple-950/60">
-          <button
-            onClick={() => {
-              setMobileMenuOpen(false);
-              openWhatsApp(GYM_INFO.whatsapp.defaultMessage);
-            }}
-            className="w-full flex items-center justify-center gap-2 py-3 px-4 text-xs font-bold text-white bg-purple-600 hover:bg-purple-500 rounded-full transition-colors shadow-lg shadow-purple-950"
-          >
-            <MessageCircle className="w-4 h-4 fill-white/20" />
-            <span>Falar no WhatsApp: {GYM_INFO.whatsapp.formattedNumber}</span>
-          </button>
-        </div>
-      </nav>
-    </header>
+      {/* Menu Lateral Drawer para Celular e Acesso Rápido */}
+      <MobileLateralMenu
+        isOpen={lateralMenuOpen}
+        onClose={() => setLateralMenuOpen(false)}
+        activeSection={activeSection}
+      />
+    </>
   );
 };

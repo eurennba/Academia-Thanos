@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { Clock, MessageCircle } from 'lucide-react';
-import { SCHEDULE_BY_DAY, GYM_INFO } from '../data/gymData';
-import { openWhatsApp } from '../utils/whatsapp';
+import { Clock } from 'lucide-react';
+import { SCHEDULE_BY_DAY } from '../data/gymData';
 import { SectionHeader } from './SectionHeader';
 
 export const Schedule: React.FC = () => {
@@ -98,18 +97,12 @@ export const Schedule: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Direct reserve action */}
-                <button
-                  onClick={() =>
-                    openWhatsApp(
-                      `Olá Professor! Gostaria de participar da aula de *${item.modality}* às ${item.time} (${selectedDay}) na Academia Thanos.`
-                    )
-                  }
-                  className="w-full sm:w-auto bg-[#181326] hover:bg-purple-600 text-white border border-purple-900/50 hover:border-purple-400 px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center justify-center gap-1.5 cursor-pointer whitespace-nowrap"
-                >
-                  <MessageCircle className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Reservar Horário</span>
-                </button>
+                {/* Badge de Horário Orientado no Salão */}
+                <div className="shrink-0">
+                  <span className="inline-block bg-[#160d26] text-purple-300 border border-purple-900/50 px-3.5 py-2 rounded-xl text-xs font-semibold">
+                    Acompanhamento no Salão
+                  </span>
+                </div>
               </div>
             ))
           ) : (

@@ -81,8 +81,8 @@ export const GYM_INFO = {
     cleanNumber: "5535991359857",
     formattedNumber: "(35) 99135-9857",
     teacherName: "Professor da Academia Thanos",
-    defaultMessage: "Olá Professor! Estive no site da Academia Thanos em Guaranésia e gostaria de saber mais sobre os treinos, horários e agendar uma aula experimental.",
-    trialMessage: "Olá Professor! Quero garantir minha aula experimental gratuita na Academia Thanos de Guaranésia!",
+    defaultMessage: "Olá Professor! Estive no site da Academia Thanos em Guaranésia e gostaria de saber mais sobre a matrícula, horários e treinos.",
+    trialMessage: "Olá Professor! Gostaria de saber mais sobre os planos e matrícula na Academia Thanos em Guaranésia!",
   },
 
   contact: {
@@ -215,7 +215,7 @@ export const PRICING_PLANS: PricingPlan[] = [
       "Ficha de treino personalizada e orientada",
       "Sem taxa de matrícula ou cancelamento",
       "Armários rotativos e duchas quentes",
-      "Atendimento direto via WhatsApp com o professor"
+      "Acompanhamento técnico diário com os professores"
     ]
   },
   {
@@ -254,9 +254,9 @@ export const TESTIMONIALS: Testimonial[] = [
     age: 29,
     timeTraining: "7 meses de Thanos",
     result: "Redução de 9cm de cintura e mais energia",
-    text: "O Plano Thanos VIP vale cada centavo! Faço musculação e o funcional orientado pelo professor Presley. O atendimento no WhatsApp pelo (35) 99135-9857 é super atencioso e rápido.",
+    text: "O Plano Thanos VIP vale cada centavo! Faço musculação com acompanhamento minucioso dos professores. A estrutura na Rua Francisco Monteiro Dias é super acolhedora e motivadora.",
     rating: 5,
-    modality: "Funcional & Musculação"
+    modality: "Musculação & Treinamento"
   },
   {
     id: "dep3",
@@ -276,16 +276,16 @@ export const FAQ_ITEMS = [
     a: "Estamos localizados na Rua Francisco Monteiro Dias, Nº 380 - Bairro Bom Jesus, em Guaranésia - MG (CEP 37810-000). O local possui fácil acesso e vagas de estacionamento."
   },
   {
-    q: "Como falar com o professor no WhatsApp?",
-    a: "Basta clicar em qualquer botão de WhatsApp no site ou chamar diretamente no número (35) 99135-9857. Nosso professor responderá prontamente com todas as informações."
+    q: "Como falar com a academia?",
+    a: "Você pode comparecer diretamente na nossa recepção na Rua Francisco Monteiro Dias, Nº 380 em Guaranésia ou utilizar a aba de contato no site."
   },
   {
     q: "Quais são os valores dos planos?",
     a: "Nosso Plano Mensal é apenas R$ 80,00 (sem carência ou fidelidade) e o Plano Thanos VIP completo com todas as modalidades é apenas R$ 90,00 por mês."
   },
   {
-    q: "Como funciona a aula experimental gratuita?",
-    a: "Você não paga nada para conhecer! Basta clicar no botão de Aula Experimental ou chamar o professor no WhatsApp pelo (35) 99135-9857 para agendar seu dia e horário."
+    q: "Como funciona para começar a treinar?",
+    a: "Você pode começar hoje mesmo! Basta comparecer na recepção da academia na Rua Francisco Monteiro Dias Nº 380 para fazer sua inscrição e iniciar seus treinos com acompanhamento profissional."
   },
   {
     q: "Iniciantes recebem instrução desde o primeiro dia?",

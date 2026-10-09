@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
-import { MessageCircle, MapPin, Phone, Send, Check } from 'lucide-react';
+import { MapPin, Phone, Send, Check } from 'lucide-react';
 import { GYM_INFO } from '../data/gymData';
-import { openWhatsApp } from '../utils/whatsapp';
 import { SectionHeader } from './SectionHeader';
 
 export const ContactSection: React.FC = () => {
   const [formData, setFormData] = useState({
     name: '',
     phone: '',
-    modality: 'Musculação',
+    modality: 'Musculação & Hipertrofia',
     message: '',
   });
   const [sent, setSent] = useState(false);
@@ -20,84 +19,68 @@ export const ContactSection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const text = `Olá Professor da Academia Thanos!
-Meu nome é ${formData.name}.
-Telefone: ${formData.phone}
-Interesse: ${formData.modality}
-Mensagem: ${formData.message || 'Gostaria de agendar uma visita e saber mais sobre os planos.'}`;
-    
-    openWhatsApp(text);
     setSent(true);
-    setTimeout(() => setSent(false), 4000);
+    setTimeout(() => setSent(false), 5000);
   };
 
   return (
-    <section id="contact" className="py-24 bg-black border-b border-purple-950/40">
-      <div className="w-[90%] max-w-[1200px] mx-auto px-5">
-        <SectionHeader title="ENTRE EM CONTATO" />
+    <section id="contact" className="py-16 sm:py-24 bg-black border-b border-purple-950/40 w-full max-w-full overflow-hidden">
+      <div className="w-[94%] max-w-[1200px] mx-auto px-2 sm:px-4">
+        <SectionHeader 
+          title="ENTRE EM CONTATO" 
+          subtitle="Tire dúvidas, conheça nossa estrutura e saiba como começar seus treinos na Academia Thanos em Guaranésia."
+        />
 
-        <div className="flex flex-col lg:flex-row gap-12 max-w-5xl mx-auto">
-          {/* Left Column: Direct info & social buttons in Purple & White */}
-          <div className="flex-1 space-y-6">
-            <h3 className="text-2xl sm:text-3xl font-bold text-white">
-              Vamos treinar juntos!
+        <div className="flex flex-col lg:flex-row gap-8 sm:gap-12 max-w-5xl mx-auto">
+          {/* Left Column: Direct info in Purple & White */}
+          <div className="flex-1 space-y-5 sm:space-y-6">
+            <h3 className="text-xl sm:text-2xl md:text-3xl font-bold text-white leading-tight">
+              Venha treinar com a gente!
             </h3>
             
-            <p className="text-zinc-200 opacity-90 font-light leading-relaxed">
-              Interessado em começar na musculação ou personal training? Quer conhecer a estrutura e os equipamentos? Entre em contato diretamente com nossa equipe.
+            <p className="text-zinc-200 opacity-90 text-sm sm:text-base font-light leading-relaxed break-words">
+              Interessado em começar na musculação ou ter acompanhamento de personal trainer? Conheça a Academia Thanos na Rua Francisco Monteiro Dias Nº 380 em Guaranésia - MG.
             </p>
 
-            <p className="text-zinc-300 opacity-90 font-light leading-relaxed">
-              Atendimento rápido via WhatsApp direto com o professor credenciado responsável pelo salão.
-            </p>
-
-            <div className="space-y-3 pt-2 text-sm text-zinc-300 font-light">
-              <div className="flex items-center gap-3">
-                <MapPin className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>Rua Francisco Monteiro Dias, 380 - Guaranésia, MG</span>
+            <div className="space-y-3 pt-2 text-xs sm:text-sm text-zinc-300 font-light">
+              <div className="flex items-start sm:items-center gap-3">
+                <MapPin className="w-4 h-4 text-purple-400 shrink-0 mt-0.5 sm:mt-0" />
+                <span className="break-words">Rua Francisco Monteiro Dias, 380 - Guaranésia, MG</span>
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>WhatsApp: {GYM_INFO.whatsapp.formattedNumber}</span>
+                <span>Telefone: {GYM_INFO.contact.phone}</span>
               </div>
             </div>
 
-            {/* Social Icons in Purple & White */}
-            <div className="flex gap-4 pt-4 flex-wrap">
-              <a
-                href={`https://wa.me/${GYM_INFO.whatsapp.cleanNumber}?text=${encodeURIComponent(GYM_INFO.whatsapp.defaultMessage)}`}
-                target="_blank"
-                rel="noreferrer"
-                className="w-12 h-12 bg-[#181326] rounded-full flex items-center justify-center text-white text-xl transition-all duration-300 hover:bg-purple-600 hover:scale-110 shadow-md shadow-purple-950 border border-purple-900/50"
-                aria-label="WhatsApp"
-              >
-                <MessageCircle className="w-5 h-5 text-purple-300" />
-              </a>
-
+            {/* Quick Action Buttons */}
+            <div className="flex gap-3 pt-2 flex-wrap">
               <a
                 href={GYM_INFO.location.googleMapsUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="w-12 h-12 bg-[#181326] rounded-full flex items-center justify-center text-white text-xl transition-all duration-300 hover:bg-purple-600 hover:scale-110 shadow-md shadow-purple-950 border border-purple-900/50"
+                className="inline-flex items-center gap-2 bg-[#140c24] hover:bg-purple-600 text-white px-4 py-2.5 rounded-xl transition-all duration-300 border border-purple-900/60 text-xs font-semibold"
                 aria-label="Localização no Google Maps"
               >
-                <MapPin className="w-5 h-5 text-purple-300" />
+                <MapPin className="w-4 h-4 text-purple-300" />
+                <span>Ver no Google Maps</span>
               </a>
 
               <a
                 href={`tel:${GYM_INFO.whatsapp.cleanNumber}`}
-                className="w-12 h-12 bg-[#181326] rounded-full flex items-center justify-center text-white text-xl transition-all duration-300 hover:bg-purple-600 hover:scale-110 shadow-md shadow-purple-950 border border-purple-900/50"
+                className="inline-flex items-center gap-2 bg-[#140c24] hover:bg-purple-600 text-white px-4 py-2.5 rounded-xl transition-all duration-300 border border-purple-900/60 text-xs font-semibold"
                 aria-label="Ligar para a Academia"
               >
-                <Phone className="w-5 h-5 text-purple-300" />
+                <Phone className="w-4 h-4 text-purple-300" />
+                <span>Ligar para a Academia</span>
               </a>
             </div>
           </div>
 
-          {/* Right Column: Contact Form in Purple & White */}
-          <div className="flex-1 bg-[#100c1c] p-6 sm:p-8 rounded-2xl border border-purple-950/60 shadow-[0_0_30px_rgba(0,0,0,0.4)]">
-            <form onSubmit={handleSubmit} className="space-y-5">
-              <div className="space-y-2">
+          {/* Right Column: Contact Form in Purple & White (Sem WhatsApp) */}
+          <div className="flex-1 bg-[#110a20] p-5 sm:p-8 rounded-2xl border border-purple-950/60 shadow-[0_0_30px_rgba(0,0,0,0.5)]">
+            <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5">
+              <div className="space-y-1.5">
                 <label htmlFor="name" className="block text-xs font-semibold text-white uppercase tracking-wider">
                   Seu Nome
                 </label>
@@ -109,13 +92,13 @@ Mensagem: ${formData.message || 'Gostaria de agendar uma visita e saber mais sob
                   placeholder="Ex: João da Silva"
                   value={formData.name}
                   onChange={handleChange}
-                  className="w-full p-3.5 bg-[#181326] border border-purple-950 rounded-xl text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400 transition-colors"
+                  className="w-full p-3 sm:p-3.5 bg-[#18112a] border border-purple-950 focus:border-purple-400 rounded-xl text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <label htmlFor="phone" className="block text-xs font-semibold text-white uppercase tracking-wider">
-                  WhatsApp com DDD
+                  Telefone / Celular com DDD
                 </label>
                 <input
                   type="tel"
@@ -125,60 +108,66 @@ Mensagem: ${formData.message || 'Gostaria de agendar uma visita e saber mais sob
                   placeholder="Ex: (35) 99999-9999"
                   value={formData.phone}
                   onChange={handleChange}
-                  className="w-full p-3.5 bg-[#181326] border border-purple-950 rounded-xl text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400 transition-colors"
+                  className="w-full p-3 sm:p-3.5 bg-[#18112a] border border-purple-950 focus:border-purple-400 rounded-xl text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors"
                 />
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <label htmlFor="modality" className="block text-xs font-semibold text-white uppercase tracking-wider">
-                  Modalidade de Interesse
+                  Assunto ou Plano
                 </label>
                 <select
                   id="modality"
                   name="modality"
                   value={formData.modality}
                   onChange={handleChange}
-                  className="w-full p-3.5 bg-[#181326] border border-purple-950 rounded-xl text-base sm:text-sm text-white focus:outline-none focus:border-purple-400 transition-colors"
+                  className="w-full p-3 sm:p-3.5 bg-[#18112a] border border-purple-950 focus:border-purple-400 rounded-xl text-base sm:text-sm text-white focus:outline-none transition-colors"
                 >
                   <option value="Musculação & Hipertrofia">Musculação & Hipertrofia</option>
-                  <option value="Personal Trainer">Personal Trainer Dedicado</option>
+                  <option value="Personal Trainer Dedicado">Personal Trainer Dedicado</option>
                   <option value="Plano Mensal (R$ 80,00)">Plano Mensal (R$ 80,00)</option>
                   <option value="Plano Thanos VIP (R$ 90,00)">Plano Thanos VIP (R$ 90,00)</option>
-                  <option value="Aula Experimental Grátis">Aula Experimental Grátis</option>
+                  <option value="Dúvidas & Informações">Dúvidas & Informações</option>
                 </select>
               </div>
 
-              <div className="space-y-2">
+              <div className="space-y-1.5">
                 <label htmlFor="message" className="block text-xs font-semibold text-white uppercase tracking-wider">
-                  Mensagem ou Dúvida (Opcional)
+                  Mensagem (Opcional)
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   rows={3}
-                  placeholder="Conte um pouco sobre sua rotina ou objetivo..."
+                  placeholder="Conte um pouco sobre seu objetivo ou horário preferido..."
                   value={formData.message}
                   onChange={handleChange}
-                  className="w-full p-3.5 bg-[#181326] border border-purple-950 rounded-xl text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none focus:border-purple-400 transition-colors resize-none"
+                  className="w-full p-3 sm:p-3.5 bg-[#18112a] border border-purple-950 focus:border-purple-400 rounded-xl text-base sm:text-sm text-white placeholder-zinc-500 focus:outline-none transition-colors resize-none"
                 />
               </div>
 
               <button
                 type="submit"
-                className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs uppercase tracking-wider py-4 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-purple-950 border border-purple-400/40"
+                className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs uppercase tracking-wider py-3.5 sm:py-4 rounded-xl transition-all flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-purple-950 border border-purple-400/40"
               >
                 {sent ? (
                   <>
                     <Check className="w-4 h-4 text-white" />
-                    <span>Abrindo WhatsApp...</span>
+                    <span>Mensagem Enviada com Sucesso!</span>
                   </>
                 ) : (
                   <>
                     <Send className="w-4 h-4" />
-                    <span>Enviar Mensagem via WhatsApp</span>
+                    <span>Enviar Mensagem</span>
                   </>
                 )}
               </button>
+
+              {sent && (
+                <div className="p-3 bg-emerald-950/60 border border-emerald-500/50 rounded-xl text-xs text-emerald-300 text-center animate-fadeIn">
+                  Recebemos seus dados! Nossa equipe entrará em contato em breve.
+                </div>
+              )}
             </form>
           </div>
         </div>

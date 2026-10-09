@@ -1,7 +1,6 @@
 import React, { useState } from 'react';
-import { ChevronDown, MessageCircle } from 'lucide-react';
-import { FAQ_ITEMS, GYM_INFO } from '../data/gymData';
-import { openWhatsApp } from '../utils/whatsapp';
+import { ChevronDown, MapPin } from 'lucide-react';
+import { FAQ_ITEMS } from '../data/gymData';
 import { SectionHeader } from './SectionHeader';
 
 export const FaqSection: React.FC = () => {
@@ -53,18 +52,18 @@ export const FaqSection: React.FC = () => {
             );
           })}
 
-          {/* Quick WhatsApp Callout under FAQ */}
+          {/* Callout under FAQ (Sem WhatsApp) */}
           <div className="text-center pt-8">
             <p className="text-sm text-zinc-400 font-light mb-4">
               Ficou com alguma dúvida que não encontrou aqui?
             </p>
-            <button
-              onClick={() => openWhatsApp(GYM_INFO.whatsapp.defaultMessage)}
+            <a
+              href="#contact"
               className="inline-flex items-center gap-2 bg-[#181326] hover:bg-purple-600 text-white border border-purple-900/50 hover:border-purple-400 px-6 py-3 rounded-full text-xs font-bold uppercase tracking-wider transition-all cursor-pointer shadow-md"
             >
-              <MessageCircle className="w-4 h-4 text-purple-400" />
-              <span>Perguntar Diretamente ao Professor</span>
-            </button>
+              <MapPin className="w-4 h-4 text-purple-400" />
+              <span>Visitar Nossa Recepção em Guaranésia</span>
+            </a>
           </div>
         </div>
       </div>
