@@ -1,5 +1,5 @@
 import React from 'react';
-import { Check, ShieldCheck, PhoneCall } from 'lucide-react';
+import { Check, ShieldCheck, MessageCircle, Phone } from 'lucide-react';
 import { COACHES } from '../data/gymData';
 import { SectionHeader } from './SectionHeader';
 
@@ -44,6 +44,10 @@ export const Coaches: React.FC = () => {
                     <p className="text-xs text-zinc-300 font-light mt-0.5 line-clamp-2">
                       {coach.role}
                     </p>
+                    <div className="text-xs font-mono text-emerald-400 font-semibold mt-1 flex items-center gap-1.5">
+                      <MessageCircle className="w-3.5 h-3.5 shrink-0" />
+                      <span>{coach.formattedPhone || coach.phone}</span>
+                    </div>
                   </div>
                 </div>
 
@@ -63,20 +67,32 @@ export const Coaches: React.FC = () => {
                 </div>
               </div>
 
-              {/* Botão de Chamada para o Professor */}
+              {/* Botão Direto para o WhatsApp do Professor */}
               <div className="pt-4 border-t border-purple-900/50 space-y-2.5">
                 <a
-                  href={`tel:${coach.phone}`}
-                  className="w-full bg-purple-600 hover:bg-purple-500 text-white font-bold text-xs uppercase tracking-tight py-3.5 px-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-md shadow-purple-950 border border-purple-400/40 hover:scale-[1.02] active:scale-95"
-                  aria-label={`Fazer chamada para ${coach.nickname || coach.name}`}
+                  href={`https://wa.me/${coach.phone}?text=${encodeURIComponent(coach.whatsappMessage)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="w-full bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs uppercase tracking-tight py-3.5 px-4 rounded-xl transition-all duration-200 flex items-center justify-center gap-2 cursor-pointer shadow-lg shadow-emerald-950/60 border border-emerald-400/40 hover:scale-[1.02] active:scale-95"
+                  aria-label={`Abrir WhatsApp de ${coach.nickname || coach.name}`}
                 >
-                  <PhoneCall className="w-4 h-4 text-white" />
-                  <span>Fazer Chamada: {coach.formattedPhone || coach.phone}</span>
+                  <MessageCircle className="w-4 h-4 text-white fill-white/20" />
+                  <span>WhatsApp: {coach.formattedPhone || coach.phone}</span>
                 </a>
 
-                <div className="w-full bg-[#18112a] text-purple-300 py-2.5 px-3 rounded-xl text-[11px] font-semibold flex items-center justify-center gap-1.5 border border-purple-900/40">
+                {/* Botão Secundário para Ligação Telefônica */}
+                <a
+                  href={`tel:${coach.phone}`}
+                  className="w-full bg-[#18112a] hover:bg-purple-950/60 text-zinc-200 hover:text-white font-semibold text-xs py-2.5 px-3 rounded-xl border border-purple-900/50 transition-colors flex items-center justify-center gap-2"
+                  aria-label={`Ligar para ${coach.nickname || coach.name}`}
+                >
+                  <Phone className="w-3.5 h-3.5 text-purple-400" />
+                  <span>Ligar: {coach.formattedPhone || coach.phone}</span>
+                </a>
+
+                <div className="w-full bg-[#140c24] text-purple-300 py-2 px-3 rounded-xl text-[11px] font-medium flex items-center justify-center gap-1.5 border border-purple-900/40">
                   <ShieldCheck className="w-3.5 h-3.5 text-purple-400" />
-                  <span>Acompanhamento Técnico Diário no Salão</span>
+                  <span>Acompanhamento Técnico Presencial no Salão</span>
                 </div>
               </div>
             </div>

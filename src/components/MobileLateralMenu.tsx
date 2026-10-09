@@ -11,6 +11,7 @@ import {
   Calculator, 
   HelpCircle, 
   Phone,
+  MessageCircle,
   ChevronRight,
   Sparkles
 } from 'lucide-react';
@@ -209,12 +210,34 @@ export const MobileLateralMenu: React.FC<MobileLateralMenuProps> = ({
           </nav>
         </div>
 
-        {/* Rodapé do Menu Lateral: Endereço & Horários */}
-        <div className="pt-4 mt-4 border-t border-purple-900/50 space-y-2">
-          <div className="p-3 rounded-xl bg-[#140c24] border border-purple-900/40 text-[11px] text-zinc-300 space-y-1">
+        {/* Rodapé do Menu Lateral: WhatsApp dos Professores & Horários */}
+        <div className="pt-3 mt-3 border-t border-purple-900/50 space-y-2">
+          <div className="text-[11px] font-semibold text-zinc-300">WhatsApp dos Professores:</div>
+          <div className="grid grid-cols-1 gap-1.5">
+            <a
+              href="https://wa.me/5535991359857?text=Ol%C3%A1%20Professor%20Vinicius!%20Estive%20no%20site%20da%20Academia%20Thanos."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 p-2 rounded-xl bg-[#140c24] hover:bg-emerald-700/80 border border-purple-900/50 text-white text-[11px] font-medium transition-colors"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>Prof. Vinicius: (35) 99135-9857</span>
+            </a>
+            <a
+              href="https://wa.me/5535997757577?text=Ol%C3%A1%20Professor%20Presley!%20Estive%20no%20site%20da%20Academia%20Thanos."
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 p-2 rounded-xl bg-[#140c24] hover:bg-emerald-700/80 border border-purple-900/50 text-white text-[11px] font-medium transition-colors"
+            >
+              <MessageCircle className="w-3.5 h-3.5 text-emerald-400 shrink-0" />
+              <span>Prof. Presley: (35) 99775-7577</span>
+            </a>
+          </div>
+
+          <div className="p-2.5 rounded-xl bg-[#140c24] border border-purple-900/40 text-[10px] text-zinc-300 space-y-0.5">
             <div className="font-semibold text-white">Academia Thanos - Guaranésia</div>
-            <div className="text-[10px] text-zinc-400">Rua Francisco Monteiro Dias, 380</div>
-            <div className="text-[10px] text-purple-300 font-medium">Seg a Sex: 05:30 às 22:00 · Sáb: 05:00 às 12:00</div>
+            <div className="text-zinc-400">Rua Francisco Monteiro Dias, 380</div>
+            <div className="text-purple-300 font-medium">Seg a Sex: 05:30 às 22:00 · Sáb: 05:00 às 12:00</div>
           </div>
         </div>
       </aside>

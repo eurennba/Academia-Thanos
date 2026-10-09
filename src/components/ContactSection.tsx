@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { MapPin, Phone, Send, Check } from 'lucide-react';
+import { MapPin, Phone, Send, Check, MessageCircle } from 'lucide-react';
 import { GYM_INFO } from '../data/gymData';
 import { SectionHeader } from './SectionHeader';
 
@@ -49,7 +49,35 @@ export const ContactSection: React.FC = () => {
               </div>
               <div className="flex items-center gap-3">
                 <Phone className="w-4 h-4 text-purple-400 shrink-0" />
-                <span>Telefone: {GYM_INFO.contact.phone}</span>
+                <span>Telefone Geral: {GYM_INFO.contact.phone}</span>
+              </div>
+            </div>
+
+            {/* WhatsApp Direto dos Professores */}
+            <div className="pt-2">
+              <div className="text-xs font-semibold text-zinc-300 uppercase tracking-tight mb-2">
+                WhatsApp Direto dos Professores:
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                <a
+                  href={`https://wa.me/5535991359857?text=${encodeURIComponent('Olá Professor Vinicius! Estive no site da Academia Thanos e gostaria de falar com você.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2.5 rounded-xl bg-[#140c24] hover:bg-emerald-700/80 border border-purple-900/60 hover:border-emerald-500 text-white transition-all text-xs font-medium shadow-md"
+                >
+                  <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span className="truncate">Prof. Vinicius: (35) 99135-9857</span>
+                </a>
+
+                <a
+                  href={`https://wa.me/5535997757577?text=${encodeURIComponent('Olá Professor Presley! Estive no site da Academia Thanos e gostaria de falar com você.')}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-2 p-2.5 rounded-xl bg-[#140c24] hover:bg-emerald-700/80 border border-purple-900/60 hover:border-emerald-500 text-white transition-all text-xs font-medium shadow-md"
+                >
+                  <MessageCircle className="w-4 h-4 text-emerald-400 shrink-0" />
+                  <span className="truncate">Prof. Presley: (35) 99775-7577</span>
+                </a>
               </div>
             </div>
 

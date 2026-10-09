@@ -9,7 +9,7 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#05030a] border-t border-purple-950/60 py-12 sm:py-16 text-zinc-400 text-sm w-full max-w-full overflow-hidden">
       <div className="w-[94%] max-w-[1200px] mx-auto px-2 sm:px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
-          {/* Brand Info - SEM LOGO */}
+          {/* Brand Info */}
           <div className="md:col-span-1 space-y-4">
             <a href="#home" className="inline-block tracking-tighter">
               <div className="text-2xl font-bold flex items-center leading-none">
@@ -75,10 +75,13 @@ export const Footer: React.FC = () => {
           </div>
         </div>
 
-        {/* Bottom copyright line in Purple & White */}
-        <div className="pt-6 sm:pt-8 border-t border-purple-950/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-light text-zinc-500 text-center sm:text-left">
+        {/* Bottom copyright line com crédito explícito: site criado por: Abnner Camargo */}
+        <div className="pt-6 sm:pt-8 border-t border-purple-950/60 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-light text-zinc-400 text-center sm:text-left">
           <div>
             © {currentYear} Academia Thanos. Todos os direitos reservados. Guaranésia - MG.
+          </div>
+          <div className="bg-[#120b22] px-3.5 py-1.5 rounded-full border border-purple-900/50 text-xs text-zinc-300">
+            Site criado por: <strong className="text-purple-400 font-semibold">Abnner Camargo</strong>
           </div>
           <div>
             Rua Francisco Monteiro Dias Nº 380 · Guaranésia - MG
