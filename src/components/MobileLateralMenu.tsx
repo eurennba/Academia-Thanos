@@ -123,23 +123,14 @@ export const MobileLateralMenu: React.FC<MobileLateralMenuProps> = ({
         aria-label="Menu Lateral de Navegação"
       >
         <div>
-          {/* Header do Menu Lateral com a Logo Oficial em Destaque */}
+          {/* Header do Menu Lateral */}
           <div className="flex items-center justify-between pb-4 border-b border-purple-900/50 mb-4">
-            <div className="flex items-center gap-2.5">
-              <div className="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-purple-500 via-fuchsia-400 to-purple-600 shadow-[0_0_12px_rgba(168,85,247,0.5)] shrink-0 overflow-hidden">
-                <img
-                  src="/logo_thanos.jpg"
-                  alt="Logo Academia Thanos"
-                  className="w-full h-full object-cover rounded-full"
-                />
+            <div>
+              <div className="text-base font-black text-white tracking-tight flex items-center leading-none">
+                ACADEMIA <span className="text-purple-400 ml-1">THANOS</span>
               </div>
-              <div>
-                <div className="text-base font-black text-white tracking-tight flex items-center leading-none">
-                  ACADEMIA <span className="text-purple-400 ml-1">THANOS</span>
-                </div>
-                <div className="text-[10px] text-purple-300 font-semibold tracking-tight uppercase mt-1">
-                  Guaranésia · MG
-                </div>
+              <div className="text-[10px] text-purple-300 font-semibold tracking-tight uppercase mt-1">
+                Guaranésia · MG
               </div>
             </div>
 
