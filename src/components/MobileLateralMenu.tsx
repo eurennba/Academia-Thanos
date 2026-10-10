@@ -15,7 +15,6 @@ import {
   ChevronRight,
   Sparkles
 } from 'lucide-react';
-import { GYM_INFO } from '../data/gymData';
 
 interface MobileLateralMenuProps {
   isOpen: boolean;
@@ -124,14 +123,23 @@ export const MobileLateralMenu: React.FC<MobileLateralMenuProps> = ({
         aria-label="Menu Lateral de Navegação"
       >
         <div>
-          {/* Header do Menu Lateral - SEM LOGO, Tipografia Limpa com Espaço Curto */}
+          {/* Header do Menu Lateral com a Logo Oficial em Destaque */}
           <div className="flex items-center justify-between pb-4 border-b border-purple-900/50 mb-4">
-            <div>
-              <div className="text-lg font-black text-white tracking-tight flex items-center leading-none">
-                ACADEMIA <span className="text-purple-400 ml-1.5">THANOS</span>
+            <div className="flex items-center gap-2.5">
+              <div className="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-purple-500 via-fuchsia-400 to-purple-600 shadow-[0_0_12px_rgba(168,85,247,0.5)] shrink-0 overflow-hidden">
+                <img
+                  src="/logo_thanos.jpg"
+                  alt="Logo Academia Thanos"
+                  className="w-full h-full object-cover rounded-full"
+                />
               </div>
-              <div className="text-[10px] text-purple-300 font-semibold tracking-tight uppercase mt-1">
-                Menu Principal
+              <div>
+                <div className="text-base font-black text-white tracking-tight flex items-center leading-none">
+                  ACADEMIA <span className="text-purple-400 ml-1">THANOS</span>
+                </div>
+                <div className="text-[10px] text-purple-300 font-semibold tracking-tight uppercase mt-1">
+                  Guaranésia · MG
+                </div>
               </div>
             </div>
 
@@ -147,7 +155,7 @@ export const MobileLateralMenu: React.FC<MobileLateralMenuProps> = ({
           {/* Quick Notice for Student */}
           <div className="mb-4 p-2.5 rounded-xl bg-purple-950/40 border border-purple-800/40 text-[11px] text-purple-200 flex items-center gap-2">
             <Sparkles className="w-4 h-4 text-purple-400 shrink-0" />
-            <span>Toque para navegar pelas seções:</span>
+            <span>Navegação pelas seções:</span>
           </div>
 
           {/* Lista Completa de Seções do Site */}
@@ -210,7 +218,7 @@ export const MobileLateralMenu: React.FC<MobileLateralMenuProps> = ({
           </nav>
         </div>
 
-        {/* Rodapé do Menu Lateral: WhatsApp dos Professores & Horários */}
+        {/* Rodapé do Menu Lateral: Contatos dos Professores & Horários */}
         <div className="pt-3 mt-3 border-t border-purple-900/50 space-y-2">
           <div className="text-[11px] font-semibold text-zinc-300">WhatsApp dos Professores:</div>
           <div className="grid grid-cols-1 gap-1.5">
