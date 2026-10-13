@@ -61,7 +61,7 @@ export const TopicSummaryCard: React.FC<TopicSummaryCardProps> = ({ topic }) => 
           title: 'Tópicos Rápidos · Professores Responsáveis',
           forStudent: [
             'Prof. Vinicius — CREF/MG | WhatsApp: (35) 99135-9857',
-            'Prof. Presley — CREF/MG | WhatsApp: (35) 99775-7577',
+            'Prof. Presley | WhatsApp: (35) 99775-7577',
             'Acompanhamento de perto no salão: você nunca treina sozinho'
           ],
           forCoach: [

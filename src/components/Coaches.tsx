@@ -35,9 +35,11 @@ export const Coaches: React.FC = () => {
                   </div>
 
                   <div className="min-w-0">
-                    <span className="text-[11px] font-bold text-purple-400 uppercase tracking-wider block mb-1">
-                      {coach.cref}
-                    </span>
+                    {coach.cref ? (
+                      <span className="text-[11px] font-bold text-purple-400 uppercase tracking-wider block mb-1">
+                        {coach.cref}
+                      </span>
+                    ) : null}
                     <h3 className="text-xl sm:text-2xl font-bold text-white group-hover:text-purple-300 transition-colors truncate">
                       {coach.nickname || coach.name}
                     </h3>

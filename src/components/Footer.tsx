@@ -9,16 +9,9 @@ export const Footer: React.FC = () => {
     <footer className="bg-[#05030a] border-t border-purple-950/60 py-12 sm:py-16 text-zinc-400 text-sm w-full max-w-full overflow-hidden">
       <div className="w-[94%] max-w-[1200px] mx-auto px-2 sm:px-4">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 sm:gap-10 mb-10 sm:mb-12">
-          {/* Brand Info com a Logo Oficial */}
+          {/* Brand Info */}
           <div className="md:col-span-1 space-y-4">
-            <a href="#home" className="inline-flex items-center gap-3 tracking-tighter group">
-              <div className="w-10 h-10 rounded-full p-0.5 bg-gradient-to-tr from-purple-500 via-fuchsia-400 to-purple-600 shadow-[0_0_15px_rgba(168,85,247,0.4)] shrink-0 overflow-hidden group-hover:scale-105 transition-transform">
-                <img
-                  src="/logo_thanos.jpg"
-                  alt="Logo Academia Thanos"
-                  className="w-full h-full object-cover rounded-full"
-                />
-              </div>
+            <a href="#home" className="inline-flex items-center tracking-tighter group">
               <div className="text-xl sm:text-2xl font-bold flex items-center leading-none">
                 <span className="text-white font-light tracking-widest">ACADEMIA </span>
                 <span className="font-extrabold text-purple-400 ml-1.5 text-left text-[21px] leading-[27px]">THANOS</span>

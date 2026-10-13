@@ -22,7 +22,7 @@ export const AboutSection: React.FC = () => {
             <p className="text-zinc-200 text-base md:text-xl leading-relaxed font-light opacity-95">
               Aqui nenhum aluno treina desamparado: nossos professores responsáveis{' '}
               <strong className="text-purple-300 font-semibold">Vinicius</strong> e{' '}
-              <strong className="text-purple-300 font-semibold">Presley</strong> (100% credenciados pelo CREF) estão diariamente no salão para instruir suas execuções, ajustar cargas e garantir sua máxima evolução com total segurança.
+              <strong className="text-purple-300 font-semibold">Presley</strong> estão diariamente no salão para instruir suas execuções, ajustar cargas e garantir sua máxima evolução com total segurança.
             </p>
 
             <p className="text-zinc-300 text-base md:text-xl leading-relaxed font-light opacity-90">

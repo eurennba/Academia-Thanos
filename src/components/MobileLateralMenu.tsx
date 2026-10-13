@@ -64,9 +64,9 @@ export const MobileLateralMenu: React.FC<MobileLateralMenuProps> = ({
     {
       id: 'professores',
       label: 'Professores no Salão',
-      desc: 'Prof. Vinicius e Prof. Presley (CREF)',
+      desc: 'Prof. Vinicius e Prof. Presley',
       icon: <Users className="w-4 h-4" />,
-      badge: 'CREF',
+      badge: 'Treinadores',
     },
     {
       id: 'localizacao',

@@ -3,7 +3,7 @@ export interface Coach {
   name: string;
   nickname?: string;
   role: string;
-  cref: string;
+  cref?: string;
   specialties: string[];
   phone: string;
   formattedPhone?: string;
@@ -120,7 +120,7 @@ export const COACHES: Coach[] = [
     name: "Presley",
     nickname: "Prof. Presley",
     role: "Professor Responsável & Treinamento Físico",
-    cref: "CREF / MG",
+    cref: "",
     specialties: ["Musculação Orientada", "Periodização de Carga", "Condicionamento Físico"],
     phone: "5535997757577",
     formattedPhone: "(35) 99775-7577",
